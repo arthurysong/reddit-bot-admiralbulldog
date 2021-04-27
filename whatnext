@@ -1,0 +1,11 @@
+first, create a database?
+
+so the script just stays running...
+
+that means like every 24 hours we should update the available emotes in the script?
+or for every submission / comment we make API calls?
+
+we'll create a Redis
+w emote name => pointing to emote URL in BTTV cdn
+
+every 24 hours we'll have a script run that update Redis db w any emotes...
