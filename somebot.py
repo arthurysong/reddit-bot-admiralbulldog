@@ -11,6 +11,8 @@ from redis_conn import connect
 # asyncio.run(connect())
 load_dotenv()
 
+# EMOTE_REPLY = "Ah! A Twitch emote user: no doubt a man of exquisite culture and refined tastes. :3"
+
 async def main():
   redis = await aioredis.create_redis_pool('redis://localhost')
 
@@ -45,7 +47,24 @@ async def main():
     if "ronnie coleman" in submission.title:
       print("submission found")
       await submission.reply(REPLY_RONNIE)
-    # for top_level_comment in submission.comments:
+
+    comments = await submission.comments()
+    for top_level_comment in comments:
+      reply = "_Ah! A Twitch emote user: no doubt a man of exquisite culture and refined tastes. :3_"
+      should_reply = False
+      print("top_level_comment", top_level_comment.body)
+      for word in top_level_comment.body.split(" "): 
+
+        # print("emotes", emotes.keys())
+
+        if word in emotes.keys():
+          reply += f'\n\n{word}: https://cdn.betterttv.net/emote/{emotes[word]}/3x'
+          should_reply = True
+
+      if should_reply:
+        print("emote found")
+        reply += "\n\n ###### From Just another Reddit Bot."
+        await top_level_comment.reply(reply)
       # if "ronnie coleman" in top_level_comment.body:
         # top_level_comment.reply(reply_text)
 
