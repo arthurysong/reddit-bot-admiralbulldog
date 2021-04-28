@@ -1,4 +1,7 @@
 import requests
+import aioredis
+from redis_conn import connect
+import asyncio
 
 URL = "https://api.betterttv.net/3/emotes/shared/top?offset=0&limit=100"
 
@@ -15,9 +18,26 @@ for emote in data:
   dictionary[emote["emote"]["code"]] = emote["emote"]["id"]
 
 
-print(dictionary);
+# print(dictionary);
 
 emote_match = "monkaS"
 imageURL = f'https://cdn.betterttv.net/emote/{dictionary[emote_match]}/3x'
 
-print("emote for monkaS", imageURL )
+# print("emote for monkaS", imageURL )
+
+async def set_emotes():
+  redis = await aioredis.create_redis_pool('redis://localhost')
+  # await redis.set('my-key', 'value')
+  # value = await redis.get('my-key', encoding='utf-8')
+  # print(value)
+  await redis.hmset_dict("emotes", dictionary)
+
+
+
+  value = await redis.hgetall("emotes", encoding="utf-8")
+  print(value);
+
+  redis.close()
+  await redis.wait_closed()
+
+asyncio.run(set_emotes())
