@@ -17,3 +17,7 @@ for emote in data:
 
 print(dictionary);
 
+emote_match = "monkaS"
+imageURL = f'https://cdn.betterttv.net/emote/{dictionary[emote_match]}/3x'
+
+print("emote for monkaS", imageURL )
