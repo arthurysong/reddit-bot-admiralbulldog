@@ -2,6 +2,12 @@ from dotenv import load_dotenv
 from urllib.parse import quote_plus
 import os
 import praw
+import asyncio
+import aioredis
+
+from redis_conn import connect
+
+asyncio.run(connect())
 
 load_dotenv()
 REPLY_RONNIE = "_You have summoned the Donger's archnemesis **RONNIE COLEMAN** \n https://generationiron.com/wp-content/uploads/2019/12/Ronnie-Coleman-Reveals-Who-Handed-Him-His-Most-Bitter-Loss.jpg_"
