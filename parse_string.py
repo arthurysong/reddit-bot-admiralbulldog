@@ -24,7 +24,6 @@ def parse_string(comment, emotes):
   for word in trimmed_str.split(" "):
     if word in emotes.keys() and not word in emote_present.keys():
       emote_present[word] = True
-      # print(word, ":", emotes[word])
 
   return list(emote_present)
 
