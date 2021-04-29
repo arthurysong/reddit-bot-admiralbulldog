@@ -7,28 +7,22 @@ import asyncpraw
 import asyncio
 import aioredis
 
-from get_emotes import test_process
+from get_emotes import test_process, get_emotes
 from concurrent.futures import ProcessPoolExecutor
 # from redis_conn import connect
 
 # asyncio.run(connect())
 load_dotenv()
 
+REPLY_RONNIE = """_You have summoned the great Donger's archnemesis **RONNIE COLEMAN**_
+  
+https://generationiron.com/wp-content/uploads/2019/12/Ronnie-Coleman-Reveals-Who-Handed-Him-His-Most-Bitter-Loss.jpg_
+
+###### From Just another Reddit Bot."""
+
 
 async def main():
-  redis = await aioredis.create_redis_pool('redis://localhost')
-
-  emotes = await redis.hgetall("emotes", encoding="utf-8")
-  # print(emotes);
-
-  redis.close()
-  await redis.wait_closed()
-
-  REPLY_RONNIE = """_You have summoned the great Donger's archnemesis **RONNIE COLEMAN**_
-  
-  https://generationiron.com/wp-content/uploads/2019/12/Ronnie-Coleman-Reveals-Who-Handed-Him-His-Most-Bitter-Loss.jpg_
-  
-  ###### From Just another Reddit Bot."""
+  emotes = await get_emotes();
 
   reddit = asyncpraw.Reddit(
       client_id=os.environ.get("CLIENT_ID"),
@@ -60,18 +54,14 @@ async def main():
     # all_comments = await comments.list()
     # TODO we should check all comments "comment stream" not just the top level comment for a submission
     # TODO make sure we DON'T reply to any comments from self
-    # for comment in all_comments:
-    print("author", comment.author);
     if (comment.author == bot_account): 
       print("don't reply to comment from self")
       continue
 
     reply = "_Ah! A Twitch emote user: no doubt a man of exquisite culture and refined tastes. :3_"
-    # should_reply = False
     print("comment", comment.body)
 
     emotes_found = parse_string(comment.body, emotes)
-    # print("emotes_found", emotes_found);
 
     if (emotes_found):
       for emote in emotes_found:
@@ -80,6 +70,12 @@ async def main():
       print("emote found")
       reply += "\n\n ###### From Just another Reddit Bot."
       await comment.reply(reply)
+
+
+async def monitor_submissions_for_ronnie():
+
+async def monitor_comments_for_bttv_emotes():
+
 
 # print(__name__)
 
