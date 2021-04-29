@@ -11,8 +11,9 @@ emotes = {
 
 # test_string = "bulldog pudge LUL KEKW WTFF"
 
+test_string = "LUL LUL LUL LUL LUL LUL LULL"
 
-test_string = "blah" 
+# test_string = "blah" 
 
 # Replace any punctuation with white spaces
 test_string = test_string.translate(str.maketrans(string.punctuation, ' '*len(string.punctuation)))

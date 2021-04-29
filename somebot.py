@@ -49,6 +49,8 @@ async def main():
       await submission.reply(REPLY_RONNIE)
 
     comments = await submission.comments()
+    # TODO we should check all comments "comment stream" not just the top level comment for a submission
+    # TODO make sure we DON'T reply to any comments from self
     for top_level_comment in comments:
       reply = "_Ah! A Twitch emote user: no doubt a man of exquisite culture and refined tastes. :3_"
       should_reply = False
