@@ -46,53 +46,52 @@ async def main():
   subreddit = await reddit.subreddit("TestBotAdmiral", fetch=True)
   # submissions = await admiral_subreddit.stream.submissions()
 
-  async for submission in subreddit.stream.submissions():
-    if "ronnie coleman" in submission.title:
-      print("submission found")
-      await submission.reply(REPLY_RONNIE)
+  # async for submission in subreddit.stream.submissions():
+  #   if "ronnie coleman" in submission.title:
+  #     print("submission found")
+  #     await submission.reply(REPLY_RONNIE)
 
-    comments = await submission.comments()
+  async for comment in subreddit.stream.comments():
+
+    # comments = await submission.comments()
 
     # this is all level comments
     # all_comments = await submission.comments.list()
-    all_comments = await comments.list()
+    # all_comments = await comments.list()
     # TODO we should check all comments "comment stream" not just the top level comment for a submission
     # TODO make sure we DON'T reply to any comments from self
-    for comment in all_comments:
-      print("author", comment.author);
-      if (comment.author == bot_account): 
-        print("don't reply to comment from self")
-        continue
+    # for comment in all_comments:
+    print("author", comment.author);
+    if (comment.author == bot_account): 
+      print("don't reply to comment from self")
+      continue
 
-      reply = "_Ah! A Twitch emote user: no doubt a man of exquisite culture and refined tastes. :3_"
-      should_reply = False
-      print("comment", comment.body)
+    reply = "_Ah! A Twitch emote user: no doubt a man of exquisite culture and refined tastes. :3_"
+    # should_reply = False
+    print("comment", comment.body)
 
-      emotes_found = parse_string(comment.body, emotes)
-      # print("emotes_found", emotes_found);
+    emotes_found = parse_string(comment.body, emotes)
+    # print("emotes_found", emotes_found);
 
-      if (emotes_found):
-        for emote in emotes_found:
-          reply += f'\n\n{emote}: https://cdn.betterttv.net/emote/{emotes[emote]}/3x'
+    if (emotes_found):
+      for emote in emotes_found:
+        reply += f'\n\n{emote}: https://cdn.betterttv.net/emote/{emotes[emote]}/3x'
 
-        print("emote found")
-        reply += "\n\n ###### From Just another Reddit Bot."
-        await comment.reply(reply)
+      print("emote found")
+      reply += "\n\n ###### From Just another Reddit Bot."
+      await comment.reply(reply)
 
 # print(__name__)
 
 if __name__ == "__main__":
   # if python file is executed as script then __name__ == __main__
-  executor = ProcessPoolExecutor(2)
-  print("HI")
+  # executor = ProcessPoolExecutor(2)
 
   
   loop = asyncio.get_event_loop()
-  # test_process();
-  baa = asyncio.ensure_future(test_process())
-  boo = asyncio.ensure_future(main())
 
-  test = loop.run_in_executor(executor, test_process);
+  loop.create_task(test_process())
+  loop.create_task(main())
   loop.run_forever()
 
   # loop.run_until_complete(main())
