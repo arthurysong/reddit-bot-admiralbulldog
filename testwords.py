@@ -27,3 +27,7 @@ for word in test_string.split(" "):
   if word in emotes.keys() and not word in emote_present.keys():
     emote_present[word] = True
     print(word, ":", emotes[word])
+
+def parse_string():
+  # accept a string, and emote dictionary
+  # return the list of emotes found
