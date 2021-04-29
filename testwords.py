@@ -10,19 +10,16 @@ emotes = {
 }
 
 # test_string = "bulldog pudge LUL KEKW WTFF"
-# any punctuation should be removed....
-test_string = "MonkaS...KEKL"
 
-# multiple emotes should be only linked once...
-# test_string = "LUL LUL LUL LUL LUL"
 
-# if any(word in test_string for word in emotes_):
+test_string = "blah" 
 
-# for word in emotes:
-#   if (word in test_string):
-#     print(word);
-test_string = test_string.translate(str.maketrans(' ', ' ', string.punctuation))
+# Replace any punctuation with white spaces
+test_string = test_string.translate(str.maketrans(string.punctuation, ' '*len(string.punctuation)))
+
 print(test_string)
+
+# if duplicate emote is present only one should get shown...
 emote_present = {};
 
 for word in test_string.split(" "):
