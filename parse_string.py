@@ -13,11 +13,9 @@ emotes = {
 test_string = "Sadge.. you will be remembered"
 
 def parse_string(comment, emotes):
-  # accept a string, and emote dictionary
-  # return the list of emotes found
-
-  # any punctuation is replaced with white spaces
-  # if duplicate emote is present only one should be returned in dictionary
+  """accept string + a list of emotes, parse the string and return any found emotes.
+  any punctuation in original string is replaced with white space. RETURNS a list of found emotes.
+  only returns uniquely found emotes"""
 
   trimmed_str = comment.translate(str.maketrans(string.punctuation, ' '*len(string.punctuation)))
 
