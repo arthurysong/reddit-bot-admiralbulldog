@@ -9,3 +9,6 @@ we'll create a Redis
 w emote name => pointing to emote URL in BTTV cdn
 
 every 24 hours we'll have a script run that update Redis db w any emotes...
+
+TODO Catch any connection exceptions and handle by reconnecting to praw
+TODO update the Redis every 24 hours.

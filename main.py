@@ -7,7 +7,7 @@ import asyncpraw
 import asyncio
 import aioredis
 
-from get_emotes import test_process, get_emotes
+from redis_func import test_process, get_emotes
 from concurrent.futures import ProcessPoolExecutor
 
 load_dotenv()
@@ -36,6 +36,8 @@ async def monitor_submissions_for_ronnie():
   subreddit = await reddit.subreddit(SUBREDDIT, fetch=True)
 
   async for submission in subreddit.stream.submissions():
+    # TODO ronnie coleman title should be normalized?
+    # TODO should control for punctuation
     if "ronnie coleman" in submission.title:
       print("submission found")
       await submission.reply(REPLY_RONNIE)
