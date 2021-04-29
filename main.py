@@ -135,12 +135,12 @@ async def monitor_comments_for_bttv_emotes():
 if __name__ == "__main__":
   # if python file is executed as script then __name__ == __main__
   # executor = ProcessPoolExecutor(2)
-
-  
   loop = asyncio.get_event_loop()
 
   loop.create_task(test_process())
-  loop.create_task(main())
+  # loop.create_task(main())
+  loop.create_task(monitor_submissions_for_ronnie())
+  loop.create_task(monitor_comments_for_bttv_emotes())
   loop.run_forever()
 
   # loop.run_until_complete(main())
