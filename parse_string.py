@@ -6,10 +6,11 @@ emotes = {
   "LUL": '/LUL',
   "KEKL": '/KEKL',
   "KEKW": 'KEKW',
-  "MonkaS": '/MonkaS'
+  "MonkaS": '/MonkaS',
+  "Sadge": '/Sadge',
 }
 
-test_string = "LUL LUL LUL LUL LUL LUL LULL"
+test_string = "Sadge.. you will be remembered"
 
 def parse_string(comment, emotes):
   # accept a string, and emote dictionary

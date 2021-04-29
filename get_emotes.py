@@ -40,4 +40,13 @@ async def set_emotes():
   redis.close()
   await redis.wait_closed()
 
-asyncio.run(set_emotes())
+
+async def test_process():
+  i = 0
+  print("from test process")
+  while True:
+    await asyncio.sleep(3)
+    print(f'{i}')
+    i += 1
+
+# asyncio.run(set_emotes())
