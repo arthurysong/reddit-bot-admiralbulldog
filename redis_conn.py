@@ -1,4 +1,5 @@
 import aioredis
+# not being used
 
 async def connect():
   redis = await aioredis.create_redis_pool('redis://localhost')

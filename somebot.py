@@ -1,12 +1,13 @@
 from dotenv import load_dotenv
 from urllib.parse import quote_plus
+from parse_string import parse_string
 import os
 # import praw
 import asyncpraw
 import asyncio
 import aioredis
 
-from redis_conn import connect
+# from redis_conn import connect
 
 # asyncio.run(connect())
 load_dotenv()
@@ -55,22 +56,16 @@ async def main():
       reply = "_Ah! A Twitch emote user: no doubt a man of exquisite culture and refined tastes. :3_"
       should_reply = False
       print("top_level_comment", top_level_comment.body)
-      for word in top_level_comment.body.split(" "): 
 
-        # print("emotes", emotes.keys())
+      emotes_found = parse_string(top_level_comment.body)
 
-        if word in emotes.keys():
-          reply += f'\n\n{word}: https://cdn.betterttv.net/emote/{emotes[word]}/3x'
-          should_reply = True
+      if (emotes_found):
+        for emote in emotes_found:
+          reply += f'\n\n{emote}: https://cdn.betterttv.net/emote/{emotes[emote]}/3x'
 
-      if should_reply:
         print("emote found")
         reply += "\n\n ###### From Just another Reddit Bot."
         await top_level_comment.reply(reply)
-      # if "ronnie coleman" in top_level_comment.body:
-        # top_level_comment.reply(reply_text)
-
-# asyncio.run(main())
 
 if __name__ == "__main__":
   loop = asyncio.get_event_loop()
