@@ -1,3 +1,8 @@
+TODO use deployed Redis
+TODO also use normalized comment body for parsing ronnie coleman :D
+TODO call it sadgebot?
+TODO add source and suggestions page?
+
 first, create a database?
 
 so the script just stays running...
@@ -12,4 +17,3 @@ every 24 hours we'll have a script run that update Redis db w any emotes...
 
 TODO Catch any connection exceptions and handle by reconnecting to praw
 TODO update the Redis every 24 hours.
-TODO use deployed Redis
