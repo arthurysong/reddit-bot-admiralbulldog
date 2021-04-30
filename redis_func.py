@@ -1,10 +1,13 @@
 import requests_async as requests
 import aioredis
 import asyncio
+import schedule
 
 URL = "https://api.betterttv.net/3/emotes/shared/top?offset=0&limit=100"
 
 async def set_emotes():
+  """queries bttv api for top 100 global emotes and sets them in redis db"""
+
   r = await requests.get(url = URL)
   data = r.json()
 
@@ -14,12 +17,16 @@ async def set_emotes():
     dictionary[emote["emote"]["code"]] = emote["emote"]["id"]
 
   redis = await aioredis.create_redis_pool('redis://localhost')
+
+  # TIL hmset_dict will UPDATE the emotes key with new key values in dictionary
   await redis.hmset_dict("emotes", dictionary)
 
   redis.close()
   await redis.wait_closed()
 
 async def delete_emotes():
+  """deletes emotes in redis db"""
+  
   redis = await aioredis.create_redis_pool('redis://localhost')
   await redis.delete("emotes")
 
@@ -27,6 +34,8 @@ async def delete_emotes():
   await redis.wait_closed()
 
 async def get_emotes():
+  """fetches emotes from redis db"""
+  
   redis = await aioredis.create_redis_pool('redis://localhost')
   value = await redis.hgetall("emotes", encoding="utf-8")
 
@@ -34,10 +43,39 @@ async def get_emotes():
   await redis.wait_closed()
   return value;
 
+def job():
+  print("I'm working...")
+
+async def test_update_emotes():
+  """A test function to update the hash set for a key"""
+
+  dictionary = {}
+
+  redis = await aioredis.create_redis_pool('redis://localhost')
+  await redis.hmset_dict("test_emotes", dictionary)
+
+  redis.close()
+  await redis.wait_closed()
+
 async def test_process():
   i = 0
-  print("from test process")
-  while True:
-    await asyncio.sleep(3)
-    print(f'{i}')
-    i += 1
+  # schedule.every().day.at("01:00").do(job)
+  print("test process starting")
+  
+
+  # every day at 1:00 am it should do this job...
+  # job should be to update emotes with the top 100 global emotes from bttv api
+  schedule.every(10).seconds.do(job)
+
+  while 1:
+    schedule.run_pending()
+    await asyncio.sleep(1)
+
+  # print("from test process")
+  # while True:
+  #   await asyncio.sleep(3)
+  #   print(f'{i}')
+  #   i += 1
+
+
+asyncio.run(test_update_emotes())

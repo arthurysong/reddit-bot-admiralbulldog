@@ -103,8 +103,6 @@ async def run_tasks():
   await bttv_process
   await update_emotes_daily
 
-
-
 if __name__ == "__main__":
   # TIL if python file is executed as script then __name__ == __main__
   asyncio.run(run_tasks())
