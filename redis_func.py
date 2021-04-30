@@ -1,8 +1,6 @@
 import requests_async as requests
 import aioredis
 import asyncio
-import aioschedule as schedule
-import time
 
 URL = "https://api.betterttv.net/3/emotes/shared/top?offset=0&limit=100"
 
@@ -58,5 +56,6 @@ async def test_update_emotes():
 async def update_emotes_daily_process():
   while 1:
     print("updating emotes....")
-    await set_emotes()
+    await update_emotes()
+    print("updated emotes!")
     await asyncio.sleep(86400);
