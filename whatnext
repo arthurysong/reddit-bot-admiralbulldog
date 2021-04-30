@@ -12,3 +12,4 @@ every 24 hours we'll have a script run that update Redis db w any emotes...
 
 TODO Catch any connection exceptions and handle by reconnecting to praw
 TODO update the Redis every 24 hours.
+TODO use deployed Redis
