@@ -1,7 +1,8 @@
 import requests_async as requests
 import aioredis
 import asyncio
-import schedule
+import aioschedule as schedule
+import time
 
 URL = "https://api.betterttv.net/3/emotes/shared/top?offset=0&limit=100"
 
@@ -35,7 +36,7 @@ async def delete_emotes():
 
 async def get_emotes():
   """fetches emotes from redis db"""
-  
+
   redis = await aioredis.create_redis_pool('redis://localhost')
   value = await redis.hgetall("emotes", encoding="utf-8")
 
@@ -46,10 +47,15 @@ async def get_emotes():
 def job():
   print("I'm working...")
 
+async def async_job():
+  print("async job started...")
+  await asyncio.sleep(2)
+  print("i'm working after a delay...")
+
 async def test_update_emotes():
   """A test function to update the hash set for a key"""
 
-  dictionary = {}
+  dictionary = { "LUL": "/LUL" }
 
   redis = await aioredis.create_redis_pool('redis://localhost')
   await redis.hmset_dict("test_emotes", dictionary)
@@ -61,21 +67,19 @@ async def test_process():
   i = 0
   # schedule.every().day.at("01:00").do(job)
   print("test process starting")
-  
 
   # every day at 1:00 am it should do this job...
   # job should be to update emotes with the top 100 global emotes from bttv api
-  schedule.every(10).seconds.do(job)
+  schedule.every(1).seconds.do(async_job)
+  loop = asyncio.get_event_loop()
 
   while 1:
-    schedule.run_pending()
-    await asyncio.sleep(1)
+    loop.run_until_complete(schedule.run_pending())
+    time.sleep(0.1)
 
-  # print("from test process")
-  # while True:
-  #   await asyncio.sleep(3)
-  #   print(f'{i}')
-  #   i += 1
+schedule.every(1).seconds.do(async_job)
+loop = asyncio.get_event_loop()
 
-
-asyncio.run(test_update_emotes())
+while 1:
+  loop.run_until_complete(schedule.run_pending())
+  time.sleep(0.1)

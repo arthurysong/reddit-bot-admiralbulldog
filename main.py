@@ -8,6 +8,7 @@ import asyncio
 import aioredis
 import asyncprawcore
 import logging
+import aioschedule as schedule
 
 from redis_func import test_process, get_emotes
 from concurrent.futures import ProcessPoolExecutor
@@ -97,7 +98,11 @@ async def monitor_comments_for_bttv_emotes():
 async def run_tasks():
   ronnie_process = asyncio.create_task(monitor_submissions_for_ronnie())
   bttv_process = asyncio.create_task(monitor_comments_for_bttv_emotes())
-  update_emotes_daily = asyncio.create_task(test_process())
+
+  schedule.every(1).seconds.do(test_process())
+
+  update_emotes_daily = asyncio.create_task(schedule.run_pending())
+
 
   await ronnie_process
   await bttv_process
