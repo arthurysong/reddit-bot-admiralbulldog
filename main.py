@@ -10,7 +10,7 @@ import asyncprawcore
 import logging
 import aioschedule as schedule
 
-from redis_func import test_process, get_emotes
+from redis_func import test_process, get_emotes, async_job
 from concurrent.futures import ProcessPoolExecutor
 
 load_dotenv()
@@ -99,9 +99,10 @@ async def run_tasks():
   ronnie_process = asyncio.create_task(monitor_submissions_for_ronnie())
   bttv_process = asyncio.create_task(monitor_comments_for_bttv_emotes())
 
-  schedule.every(1).seconds.do(test_process())
+  # schedule.every(1).seconds.do(async_job)
 
-  update_emotes_daily = asyncio.create_task(schedule.run_pending())
+  # update_emotes_daily = asyncio.create_task(schedule.run_pending())
+  update_emotes_daily = asyncio.create_task(test_process())
 
 
   await ronnie_process

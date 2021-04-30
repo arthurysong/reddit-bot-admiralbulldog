@@ -6,7 +6,7 @@ import time
 
 URL = "https://api.betterttv.net/3/emotes/shared/top?offset=0&limit=100"
 
-async def set_emotes():
+async def update_emotes():
   """queries bttv api for top 100 global emotes and sets them in redis db"""
 
   r = await requests.get(url = URL)
@@ -51,6 +51,7 @@ async def async_job():
   print("async job started...")
   await asyncio.sleep(2)
   print("i'm working after a delay...")
+  return 2
 
 async def test_update_emotes():
   """A test function to update the hash set for a key"""
@@ -63,23 +64,31 @@ async def test_update_emotes():
   redis.close()
   await redis.wait_closed()
 
-async def test_process():
-  i = 0
-  # schedule.every().day.at("01:00").do(job)
-  print("test process starting")
+async def update_emotes_daily_process():
+  # i = 0
+  # # schedule.every().day.at("01:00").do(job)
+  # print("test process starting")
 
-  # every day at 1:00 am it should do this job...
-  # job should be to update emotes with the top 100 global emotes from bttv api
-  schedule.every(1).seconds.do(async_job)
-  loop = asyncio.get_event_loop()
+  # # every day at 1:00 am it should do this job...
+  # # job should be to update emotes with the top 100 global emotes from bttv api
+  # schedule.every(1).seconds.do(async_job)
+  # loop = asyncio.get_event_loop()
+
+  # loop.run_until_complete(async_job)
+  # print("loop", loop)
+  # while 1:
+  #   print("hello")
+  #   # loop.run_until_complete(schedule.run_pending()) 
+  #   time.sleep(0.1)
 
   while 1:
-    loop.run_until_complete(schedule.run_pending())
-    time.sleep(0.1)
+    print("updating emotes....")
+    await set_emotes()
+    await asyncio.sleep(1);
 
-schedule.every(1).seconds.do(async_job)
-loop = asyncio.get_event_loop()
+# schedule.every(1).seconds.do(async_job)
+# loop = asyncio.get_event_loop()
 
-while 1:
-  loop.run_until_complete(schedule.run_pending())
-  time.sleep(0.1)
+# while 1:
+#   loop.run_until_complete(schedule.run_pending())
+#   time.sleep(0.1)
