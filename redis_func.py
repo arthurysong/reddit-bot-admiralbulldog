@@ -7,11 +7,13 @@ import os
 load_dotenv()
 
 URL = "https://api.betterttv.net/3/emotes/shared/top?offset=0&limit=100"
-REDIS = os.environ.get("REDIS_URL")
+REDIS = os.environ.get("REDIS_URL") if os.environ.get("APP_ENV") != "dev" else "redis://localhost"
 
 async def update_emotes():
   """queries bttv api for top 100 global emotes and sets them in redis db"""
 
+
+  print(REDIS)
   r = await requests.get(url = URL)
   data = r.json()
 

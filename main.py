@@ -85,7 +85,6 @@ async def monitor_comments_for_bttv_emotes():
         emotes_found = parse_string(comment.body, emotes)
 
         if (emotes_found):
-          print("emote found")
           for emote in emotes_found:
             reply += f'\n\n{emote}: https://cdn.betterttv.net/emote/{emotes[emote]}/3x'
 

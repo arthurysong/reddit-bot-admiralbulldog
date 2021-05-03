@@ -8,6 +8,7 @@ emotes = {
   "KEKW": 'KEKW',
   "MonkaS": '/MonkaS',
   "Sadge": '/Sadge',
+  "monkaS" : "/monkaS"
 }
 
 test_string = "Sadge.. you will be remembered"
@@ -28,5 +29,17 @@ def parse_string(comment, emotes):
   return list(emote_present)
 
 
+def check_string_for_ronnie(text):
+  "check if string contains the substring 'ronnie coleman'"
+
+  # replace punctuation with white space and normalize to lower case
+  normalized = text.translate(str.maketrans(string.punctuation, ' '*len(string.punctuation))).lower()
+
+  if "ronnie" in normalized and "coleman" in normalized:
+    return True
+  else:
+    return False
+
 # print(parse_string(test_string, emotes))
 # print(list(emotes))
+# print(parse_string("monkaS LUL", emotes))
