@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 from urllib.parse import quote_plus
-from parse_string import parse_string
+from parse_string import parse_string, check_string_for_ronnie
 import os
 # import praw
 import asyncpraw
@@ -41,9 +41,7 @@ async def monitor_submissions_for_ronnie():
       subreddit = await reddit.subreddit(SUBREDDIT, fetch=True)
 
       async for submission in subreddit.stream.submissions(skip_existing=True):
-        # TODO ronnie coleman title should be normalized?
-        # TODO should control for punctuation
-        if "ronnie coleman" in submission.title:
+        if check_string_for_ronnie(submission.title):
           print("submission found")
           await submission.reply(REPLY_RONNIE)
     except asyncprawcore.exceptions.RequestException:
