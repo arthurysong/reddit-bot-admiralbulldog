@@ -1,3 +1,6 @@
+`python3 main.py &` to run the script in background 
+`ps ax | grep main.py` to see running main.py process
+
 TODO use deployed Redis
 TODO also use normalized comment body for parsing ronnie coleman :D
 TODO call it sadgebot?

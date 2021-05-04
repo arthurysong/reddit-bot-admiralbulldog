@@ -15,7 +15,8 @@ from concurrent.futures import ProcessPoolExecutor
 
 load_dotenv()
 
-SUBREDDIT = "TestBotAdmiral"
+SUBREDDIT = "TestBotAdmiral" if os.environ.get("APP_ENV") == "dev" else "AdmiralBulldog"
+print(SUBREDDIT)
 REPLY_RONNIE = """_You have summoned the great Donger's archnemesis **RONNIE COLEMAN**_
   
 https://generationiron.com/wp-content/uploads/2019/12/Ronnie-Coleman-Reveals-Who-Handed-Him-His-Most-Bitter-Loss.jpg_
