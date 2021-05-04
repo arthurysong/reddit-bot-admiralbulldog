@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from dotenv import load_dotenv
 from urllib.parse import quote_plus
 from parse_string import parse_string, check_string_for_ronnie
