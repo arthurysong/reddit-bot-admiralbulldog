@@ -18,12 +18,13 @@ from concurrent.futures import ProcessPoolExecutor
 load_dotenv()
 
 SUBREDDIT = "TestBotAdmiral" if os.environ.get("APP_ENV") == "dev" else "AdmiralBulldog"
+SIGNATURE = "###### From Just another Reddit Bot. [Issues & Suggestions](https://github.com/arthurysong/reddit-bot-admiralbulldog/issues) [Source](https://github.com/arthurysong/reddit-bot-admiralbulldog) [Creator](https://www.reddit.com/user/Sonareads)"
 print(SUBREDDIT)
 REPLY_RONNIE = """_You have summoned the great Donger's archnemesis **RONNIE COLEMAN**_
   
 https://generationiron.com/wp-content/uploads/2019/12/Ronnie-Coleman-Reveals-Who-Handed-Him-His-Most-Bitter-Loss.jpg_
 
-###### From Just another Reddit Bot."""
+%s""" % (SIGNATURE)
 
 async def monitor_submissions_for_ronnie():
   """this process will monitor only submissions and reply with an image of RONNIE COLEMAN. does not 
@@ -90,7 +91,7 @@ async def monitor_comments_for_bttv_emotes():
             reply += f'\n\n{emote}: https://cdn.betterttv.net/emote/{emotes[emote]}/3x'
 
           print("emote found")
-          reply += "\n\n ###### From Just another Reddit Bot. [Issues](https://github.com/arthurysong/reddit-bot-admiralbulldog/issues)"
+          reply += f'\n\n {SIGNATURE}'
           await comment.reply(reply)
     except asyncprawcore.exceptions.RequestException:
       logging.warning("emote process couldn't connect to praw.. restarting process")
