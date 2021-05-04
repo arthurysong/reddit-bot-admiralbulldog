@@ -1,6 +1,6 @@
 # AdmiralClockwerk
 
-AdmiralClockwerk: A bot that checks for twitch emotes in Admiral Bulldog's subreddit. The bot will respond to any comments that contains a BTTV emote with a link to the image of the emote(s). (Currently, AdmiralClockwerk only stores the top 100 BTTV Global emotes.. I'm looking to add Bulldog's channel emotes) 
+AdmiralClockwerk: A bot that checks for twitch emotes in Admiral Bulldog's subreddit. The bot will respond to any comments that contains a BTTV emote with a link to the image of the emote(s). (Currently, AdmiralClockwerk only responds to comments that contain one of the top 100 BTTV Global emotes.. I'm looking to add Bulldog's channel emotes as well) 
 
 ## How does it work?
 
@@ -8,16 +8,16 @@ The bot stores the top 100 global emotes from BTTV's API (Better Twitch TV) in a
 
 ### Checking for emotes in comments
 
-The comment is first normalized by replacing any punctuation with white space. Then, the comment string is split into an array of words. If any of the split words 
-exactly match (case sensitive) any of the stored emotes, AdmiralClockwerk will respond to the comment with the url's to the matching emote image.
+The bot uses PRAW the monitor the stream of comments in Sir Donger's subreddit. In order to check for a matching emote, the comment is first normalized by replacing any punctuation with white space. Then, the comment string is split into an array of words. If any of the split words 
+exactly match (case sensitive) any of the stored emotes, AdmiralClockwerk will respond to the comment with the url(s) to the matching emote image(s).
 
-## Ronnie Coleman
+## Ronnie Coleman Here I come
 
 The bot also checks for any **post titles** that contain "ronnie" and "coleman". This feature only checks post titles so any comments with "ronnie" and "coleman" won't be replied to. 
 
 ## BTTV & BTTV API
 [Top global emotes](https://betterttv.com/emotes/top)
-API URL for top 100 emotes ["https://api.betterttv.net/3/emotes/shared/top?offset=0&limit=100"]("https://api.betterttv.net/3/emotes/shared/top?offset=0&limit=100")
+BTTV v3 API URL for top 100 emotes ["https://api.betterttv.net/3/emotes/shared/top?offset=0&limit=100"]("https://api.betterttv.net/3/emotes/shared/top?offset=0&limit=100")
 
 ## Reddit Connection Wrapper (Praw)
 [PRAW](https://asyncpraw.readthedocs.io/en/latest/)
@@ -25,7 +25,7 @@ API URL for top 100 emotes ["https://api.betterttv.net/3/emotes/shared/top?offse
 
 check /whatnext for current TODOs. Please leave any suggestions or feedback as an issue!!!
 
-## ENV variables needed
+## ENV variables needed to run script
 
 | Variable        | Description                                                                 |
 | --------------- | --------------------------------------------------------------------------- |
