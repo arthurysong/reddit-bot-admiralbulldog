@@ -1,10 +1,15 @@
 # AdmiralClockwerk
 
-AdmiralClockwerk: A bot that checks for twitch emotes in Admiral Bulldog's subreddit. The bot will respond to any comments that contains a BTTV emote with a link pointing to the image of the emote. (Currently, AdmiralClockwerk only stores the top 100 BTTV Global emotes.. I'm looking to add Bulldog's channel emotes) 
+AdmiralClockwerk: A bot that checks for twitch emotes in Admiral Bulldog's subreddit. The bot will respond to any comments that contains a BTTV emote with a link to the image of the emote(s). (Currently, AdmiralClockwerk only stores the top 100 BTTV Global emotes.. I'm looking to add Bulldog's channel emotes) 
 
 ## How does it work?
 
-The bot stores the top 100 global emotes from BTTV (Better Twitch TV) in a Redis db. Everyday the bot will update the database with any new emotes in the top 100. Anytime a comment is posted in Admiral Donger's subreddit, it checks to see if the comment contains any of the stored emotes--the case of the text needs to match emote exactly in order for the bot to respond(so "Sadge blah blah blah" will match the emote "Sadge" and "sadge blah blah blah" won't match). Any punctuation in the comment string is replaced with white space before checking for emotes.
+The bot stores the top 100 global emotes from BTTV's API (Better Twitch TV) in a Redis db. Once a day, the bot will update the database with any new emotes in the top 100. 
+
+### Checking for emotes in comments
+
+The comment is first normalized by replacing any punctuation with white space. Then, the comment string is split into an array of words. If any of the split words 
+exactly match (case sensitive) any of the stored emotes, AdmiralClockwerk will respond to the comment with the url's to the matching emote image.
 
 ## BTTV & BTTV API
 [Top global emotes](https://betterttv.com/emotes/top)
