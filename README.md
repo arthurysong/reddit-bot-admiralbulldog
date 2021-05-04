@@ -14,14 +14,15 @@ API URL for top 100 emotes ["https://api.betterttv.net/3/emotes/shared/top?offse
 [PRAW](https://asyncpraw.readthedocs.io/en/latest/)
 ## TODOS / suggestions
 
-check /whatnext
+check /whatnext for current TODOs
+Please leave any suggestions or feedback as an issue!!!
 ## Ronnie Coleman
 
 The bot also checks for any **post titles** that contain "ronnie" and "coleman". This feature only checks post titles so any comments with "ronnie" and "coleman" won't be replied to. 
 
 ## ENV variables needed
 
-| ENV             | Description                                                                 |
+| Variable        | Description                                                                 |
 | CLIENT_ID       | reddit app id                                                               |
 | CLIENT_SECRET   | reddit app secret                                                           |
 | CLIENT_USERNAME | reddit bot account username                                                 |
