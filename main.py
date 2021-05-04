@@ -90,7 +90,7 @@ async def monitor_comments_for_bttv_emotes():
             reply += f'\n\n{emote}: https://cdn.betterttv.net/emote/{emotes[emote]}/3x'
 
           print("emote found")
-          reply += "\n\n ###### From Just another Reddit Bot."
+          reply += "\n\n ###### From Just another Reddit Bot. [Issues](https://github.com/arthurysong/reddit-bot-admiralbulldog/issues)"
           await comment.reply(reply)
     except asyncprawcore.exceptions.RequestException:
       logging.warning("emote process couldn't connect to praw.. restarting process")
