@@ -11,6 +11,10 @@ The bot stores the top 100 global emotes from BTTV's API (Better Twitch TV) in a
 The comment is first normalized by replacing any punctuation with white space. Then, the comment string is split into an array of words. If any of the split words 
 exactly match (case sensitive) any of the stored emotes, AdmiralClockwerk will respond to the comment with the url's to the matching emote image.
 
+## Ronnie Coleman
+
+The bot also checks for any **post titles** that contain "ronnie" and "coleman". This feature only checks post titles so any comments with "ronnie" and "coleman" won't be replied to. 
+
 ## BTTV & BTTV API
 [Top global emotes](https://betterttv.com/emotes/top)
 API URL for top 100 emotes ["https://api.betterttv.net/3/emotes/shared/top?offset=0&limit=100"]("https://api.betterttv.net/3/emotes/shared/top?offset=0&limit=100")
@@ -19,15 +23,12 @@ API URL for top 100 emotes ["https://api.betterttv.net/3/emotes/shared/top?offse
 [PRAW](https://asyncpraw.readthedocs.io/en/latest/)
 ## TODOS / suggestions
 
-check /whatnext for current TODOs
-Please leave any suggestions or feedback as an issue!!!
-## Ronnie Coleman
-
-The bot also checks for any **post titles** that contain "ronnie" and "coleman". This feature only checks post titles so any comments with "ronnie" and "coleman" won't be replied to. 
+check /whatnext for current TODOs. Please leave any suggestions or feedback as an issue!!!
 
 ## ENV variables needed
 
 | Variable        | Description                                                                 |
+| --------------- | --------------------------------------------------------------------------- |
 | CLIENT_ID       | reddit app id                                                               |
 | CLIENT_SECRET   | reddit app secret                                                           |
 | CLIENT_USERNAME | reddit bot account username                                                 |
