@@ -25,10 +25,12 @@ From Just another Sadge Reddit Bot
 [*^(Source)*](https://github.com/arthurysong/reddit-bot-admiralbulldog) *^(|)* 
 [*^(Creator)*](https://www.reddit.com/user/Sonareads)
 """
-print(SUBREDDIT)
 REPLY_RONNIE = """_You have summoned the great Donger's archnemesis [***Ronnie Coleman***](https://generationiron.com/wp-content/uploads/2019/12/Ronnie-Coleman-Reveals-Who-Handed-Him-His-Most-Bitter-Loss.jpg)
 
 %s""" % (SIGNATURE)
+
+print(SUBREDDIT)
+
 
 async def monitor_submissions_for_ronnie():
   """this process will monitor only submissions and reply with an image of RONNIE COLEMAN. does not 
