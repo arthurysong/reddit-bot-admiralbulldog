@@ -15,6 +15,7 @@ async def update_all_emotes():
 
   offset = 0
   while True:
+    print("fetching emotes ...", offset)
     r = await requests.get(url = f'https://api.betterttv.net/3/emotes/shared/top?offset={offset}&limit=100')
     data = r.json()
     # try to get 100 emotes

@@ -18,7 +18,12 @@ from concurrent.futures import ProcessPoolExecutor
 load_dotenv()
 
 SUBREDDIT = "TestBotAdmiral" if os.environ.get("APP_ENV") == "dev" else "AdmiralBulldog"
-SIGNATURE = "###### From Just another Reddit Bot. [Issues & Suggestions](https://github.com/arthurysong/reddit-bot-admiralbulldog/issues) [Source](https://github.com/arthurysong/reddit-bot-admiralbulldog) [Creator](https://www.reddit.com/user/Sonareads)"
+SIGNATURE = """---
+From Just another Sadge Reddit Bot
+[*^(Issues & Suggestions)*](https://github.com/arthurysong/reddit-bot-admiralbulldog/issues) *^(|)* 
+[*^(Source)*](https://github.com/arthurysong/reddit-bot-admiralbulldog) *^(|)* 
+[*^(Creator)*](https://www.reddit.com/user/Sonareads)
+"""
 print(SUBREDDIT)
 REPLY_RONNIE = """_You have summoned the great Donger's archnemesis **RONNIE COLEMAN**_
   
@@ -81,14 +86,14 @@ async def monitor_comments_for_bttv_emotes():
           print("don't reply to comment from self")
           continue
 
-        reply = "_Ah! A Twitch emote user: no doubt a man of exquisite culture and refined tastes. :3_"
+        reply = "_Ah! A Twitch emote user: no doubt a man of exquisite culture and refined tastes. 🍷🍷🍷_"
         print("comment", comment.body)
 
         emotes_found = parse_string(comment.body, emotes)
 
         if (emotes_found):
           for emote in emotes_found:
-            reply += f'\n\n{emote}: https://cdn.betterttv.net/emote/{emotes[emote]}/3x'
+            reply += f'\n\n[{emote}](https://cdn.betterttv.net/emote/{emotes[emote]}/3x)'
 
           print("emote found")
           reply += f'\n\n {SIGNATURE}'
