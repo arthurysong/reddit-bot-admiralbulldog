@@ -20,6 +20,7 @@ load_dotenv()
 SUBREDDIT = "TestBotAdmiral" if os.environ.get("APP_ENV") == "dev" else "AdmiralBulldog"
 SIGNATURE = """---
 From Just another Sadge Reddit Bot
+
 [*^(Issues & Suggestions)*](https://github.com/arthurysong/reddit-bot-admiralbulldog/issues) *^(|)* 
 [*^(Source)*](https://github.com/arthurysong/reddit-bot-admiralbulldog) *^(|)* 
 [*^(Creator)*](https://www.reddit.com/user/Sonareads)
