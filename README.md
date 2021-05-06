@@ -19,6 +19,13 @@ The bot also checks for any **post titles** that contain "ronnie" and "coleman".
 [Top global emotes](https://betterttv.com/emotes/top)
 BTTV v3 API URL for top 100 emotes ["https://api.betterttv.net/3/emotes/shared/top?offset=0&limit=100"]("https://api.betterttv.net/3/emotes/shared/top?offset=0&limit=100")
 
+## Dev
+
+1. Install dependencies: `pip install -r /path/to/requirements.txt`
+2. Set .env file (see below for ENV vars)
+3. Run local Redis running
+4. Run main.py
+
 ## Reddit Connection Wrapper (Praw)
 [PRAW](https://asyncpraw.readthedocs.io/en/latest/)
 ## TODOS / suggestions
