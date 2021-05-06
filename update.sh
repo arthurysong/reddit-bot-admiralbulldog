@@ -2,6 +2,7 @@
 
 # this script will pull changes in ec2 instance and restart bot with changes.
 
+# this doesn't work yet
 ssh -i '~/.ssh/arthurec2.pem' ubuntu@13.57.195.73 /bin/bash <<EOT
   # update and restart should
   cd reddit-bot-admiralbulldog

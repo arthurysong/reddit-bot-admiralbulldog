@@ -1,3 +1,9 @@
+t2.micro 0.555 GiB is enough for elasticache..
+recreate the elasticache with no read replicas. it's too expensive for me to have reeplicas :P
+
+TODO fetch all 10,000 emotes from BTTV not just the first 100, it's only a 100 api calls that happen once a day so it's not too bad.
+
+
 `python3 main.py &` to run the script in background 
 `ps ax | grep main.py` to see running main.py process
 
