@@ -12,8 +12,20 @@ REDIS = os.environ.get("REDIS_URL") if os.environ.get("APP_ENV") != "dev" else "
 BULLDOG_CHANNEL_ID = "565aed74f5e5b6c9580f42cf"
 
 async def update_all_emotes():
-  """Should just fetch all channel emotes for Bulldog BTTV and set in Redis"""
+  """Should just fetch all emotes available in Bulldog's Twitch Channel using BTTV
+  
+  Needs to fetch all 
+  1. BTTV Channel Emotes
+  2. BTTV Global Emotes
+  3. FrankerFaceZ Channel Emotes
+  4. FrankerFaceZ Global Emotes
+  5. Global Twitch
+  6. Twitch Prime
+  """
 
+  # gets all BTTV channel emotes
+
+  print("getting BTTV emotes..")
   URL = f'https://api.betterttv.net/3/users/{BULLDOG_CHANNEL_ID}?limited=false&personal=false'
 
   r = await requests.get(url = URL)
@@ -22,18 +34,35 @@ async def update_all_emotes():
   channel_emotes = data["channelEmotes"]
   shared_emotes = data["sharedEmotes"]
 
-  dictionary = {};
+  bttv_dictionary = {};
   for emote in channel_emotes:
-    dictionary[emote["code"]] = emote["id"]
+    bttv_dictionary[emote["code"]] = emote["id"]
 
   for emote in shared_emotes:
-    dictionary[emote["code"]] = emote["id"]
+    bttv_dictionary[emote["code"]] = emote["id"]
+
+
+  # gets all FF channel emotes
+  print("getting FF emotes")
+  URL = "https://api.frankerfacez.com/v1/room/admiralbulldog"
+
+  r = await requests.get(url = URL)
+  data = r.json()
+
+  ff_emotes = list(data["sets"].values())[0]["emoticons"]
+
+  ff_dictionary = {};
+  for emote in ff_emotes:
+    ff_dictionary[emote["name"]] = emote["id"]
+
+
   
 
   redis = await aioredis.create_redis_pool(REDIS)
 
   # TIL hmset_dict will UPDATE the emotes key with new key values in dictionary
-  await redis.hmset_dict("emotes", dictionary)
+  await redis.hmset_dict("bttv_emotes", bttv_dictionary)
+  await redis.hmset_dict("ff_emotes", ff_dictionary)
 
   redis.close()
   await redis.wait_closed()
@@ -63,6 +92,7 @@ async def delete_emotes():
   
   redis = await aioredis.create_redis_pool(REDIS)
   await redis.delete("emotes")
+  await redis.delete("test_emotes")
 
   redis.close()
   await redis.wait_closed()
@@ -94,3 +124,5 @@ async def update_emotes_daily_process():
     await update_all_emotes()
     print("updated emotes!")
     await asyncio.sleep(86400);
+
+asyncio.run(update_all_emotes())
