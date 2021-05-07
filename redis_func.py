@@ -54,9 +54,6 @@ async def update_all_emotes():
   r = await requests.get(url = URL)
   global_emotes = r.json()
 
-  pprint(global_emotes)
-  print(len(global_emotes))
-
   for emote in global_emotes:
     bttv_dictionary[emote["code"]] = emote["id"]
 
