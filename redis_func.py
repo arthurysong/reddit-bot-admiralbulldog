@@ -14,15 +14,21 @@ BULLDOG_CHANNEL_ID = "565aed74f5e5b6c9580f42cf"
 async def update_all_emotes():
   """Should just fetch all channel emotes for Bulldog BTTV and set in Redis"""
 
-  URL = f'https://api.betterttv.net/3/users/{BULLDOG_CHANNEL_ID}?limited=true&personal=false'
+  URL = f'https://api.betterttv.net/3/users/{BULLDOG_CHANNEL_ID}?limited=false&personal=false'
 
   r = await requests.get(url = URL)
   data = r.json()
-  emotes = data["channelEmotes"]
+
+  channel_emotes = data["channelEmotes"]
+  shared_emotes = data["sharedEmotes"]
 
   dictionary = {};
-  for emote in emotes:
-    dictionary[emote["emote"]["code"]] = emote["emote"]["id"]
+  for emote in channel_emotes:
+    dictionary[emote["code"]] = emote["id"]
+
+  for emote in shared_emotes:
+    dictionary[emote["code"]] = emote["id"]
+  
 
   redis = await aioredis.create_redis_pool(REDIS)
 
@@ -88,6 +94,3 @@ async def update_emotes_daily_process():
     await update_all_emotes()
     print("updated emotes!")
     await asyncio.sleep(86400);
-
-
-asyncio.run(delete_emotes())
