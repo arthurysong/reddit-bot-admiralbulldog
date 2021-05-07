@@ -92,9 +92,6 @@ async def update_all_emotes():
   for emote in ff_global_emotes:
     ff_dictionary[emote["name"]] = emote["id"]
 
-
-
-
   redis = await aioredis.create_redis_pool(REDIS)
 
   # TIL hmset_dict will UPDATE the emotes key with new key values in dictionary
@@ -134,15 +131,26 @@ async def delete_emotes():
   redis.close()
   await redis.wait_closed()
 
-async def get_emotes():
+async def get_bttv_emotes():
   """fetches emotes from redis db"""
 
   redis = await aioredis.create_redis_pool(REDIS)
-  value = await redis.hgetall("emotes", encoding="utf-8")
+  value = await redis.hgetall("bttv_emotes", encoding="utf-8")
 
   redis.close()
   await redis.wait_closed()
   return value;
+
+async def get_ff_emotes():
+  """fetch frankerfacez emotes from redis"""
+
+  redis = await aioredis.create_redis_pool(REDIS)
+  value = await redis.hgetall("ff_emotes", encoding="utf-8")
+
+  redis.close()
+  await redis.wait_closed()
+  return value;
+
 
 async def test_update_emotes():
   """A test function to update the hash set for a key"""

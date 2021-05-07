@@ -12,7 +12,7 @@ import asyncprawcore
 import logging
 import aioschedule as schedule
 
-from redis_func import update_emotes_daily_process, get_emotes
+from redis_func import update_emotes_daily_process, get_bttv_emotes, get_ff_emotes
 from concurrent.futures import ProcessPoolExecutor
 
 load_dotenv()
@@ -65,7 +65,8 @@ async def monitor_comments_for_bttv_emotes():
 
   while 1:
     try: 
-      emotes = await get_emotes();
+      bttv_emotes = await get_bttv_emotes();
+      ff_emotes = await get_ff_emotes();
 
       reddit = asyncpraw.Reddit(
           client_id=os.environ.get("CLIENT_ID"),
@@ -90,11 +91,17 @@ async def monitor_comments_for_bttv_emotes():
         reply = "_Ah! A Twitch emote user: no doubt a man of exquisite culture and refined tastes. 🍷🍷🍷_"
         print("comment", comment.body)
 
-        emotes_found = parse_string(comment.body, emotes)
+        # check for bttv emotes
 
-        if (emotes_found):
-          for emote in emotes_found:
-            reply += f'\n\n[{emote}](https://cdn.betterttv.net/emote/{emotes[emote]}/3x)'
+        bttv_emotes_found = parse_string(comment.body, bttv_emotes)
+        ff_emotes_found = parse_string(comment.body, ff_emotes)
+
+        if (bttv_emotes_found or ff_emotes_found):
+          for emote in bttv_emotes_found:
+            reply += f'\n\n[{emote}](https://cdn.betterttv.net/emote/{bttv_emotes[emote]}/3x)'
+
+          for emote in ff_emotes_found:
+            reply += f'\n\n[{emote}](https://cdn.frankerfacez.com/emote/{ff_emotes[emote]}/1)'
 
           print("emote found")
           reply += f'\n\n {SIGNATURE}'
