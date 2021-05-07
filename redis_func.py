@@ -9,44 +9,31 @@ load_dotenv()
 
 URL = "https://api.betterttv.net/3/emotes/shared/top?offset=0&limit=100"
 REDIS = os.environ.get("REDIS_URL") if os.environ.get("APP_ENV") != "dev" else "redis://localhost"
+BULLDOG_CHANNEL_ID = "565aed74f5e5b6c9580f42cf"
 
 async def update_all_emotes():
-  """figure out how to get all 10000 emotes from bttv"""
+  """Should just fetch all channel emotes for Bulldog BTTV and set in Redis"""
 
-  offset = 0
-  while True:
-    print("fetching emotes ...", offset)
-    r = await requests.get(url = f'https://api.betterttv.net/3/emotes/shared/top?offset={offset}&limit=100')
-    data = r.json()
-    # try to get 100 emotes
+  URL = f'https://api.betterttv.net/3/users/{BULLDOG_CHANNEL_ID}?limited=true&personal=false'
 
-    # pprint(data);
-    # print(len(data))
+  r = await requests.get(url = URL)
+  data = r.json()
+  emotes = data["channelEmotes"]
 
-    if (len(data) == 0):
-      break;
-    
-    offset += len(data) 
+  dictionary = {};
+  for emote in emotes:
+    dictionary[emote["emote"]["code"]] = emote["emote"]["id"]
 
-    dictionary = {};
+  redis = await aioredis.create_redis_pool(REDIS)
 
-    for emote in data:
-      dictionary[emote["emote"]["code"]] = emote["emote"]["id"]
+  # TIL hmset_dict will UPDATE the emotes key with new key values in dictionary
+  await redis.hmset_dict("emotes", dictionary)
 
-    redis = await aioredis.create_redis_pool(REDIS)
-
-    # TIL hmset_dict will UPDATE the emotes key with new key values in dictionary
-    await redis.hmset_dict("emotes", dictionary)
-
-    redis.close()
-    await redis.wait_closed()
-
+  redis.close()
+  await redis.wait_closed()
 
 async def update_emotes():
   """queries bttv api for top 100 global emotes and sets them in redis db"""
-
-
-
 
   print(REDIS)
   r = await requests.get(url = URL)
@@ -101,3 +88,6 @@ async def update_emotes_daily_process():
     await update_all_emotes()
     print("updated emotes!")
     await asyncio.sleep(86400);
+
+
+asyncio.run(delete_emotes())
