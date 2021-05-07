@@ -21,11 +21,16 @@ async def update_all_emotes():
   4. FrankerFaceZ Global Emotes
   5. Global Twitch
   6. Twitch Prime
+
+  Sets all emotes in Redis 
   """
 
+  # BTTV
+
+  bttv_dictionary = {};
   # gets all BTTV channel emotes
 
-  print("getting BTTV emotes..")
+  print("getting BTTV channel emotes..")
   URL = f'https://api.betterttv.net/3/users/{BULLDOG_CHANNEL_ID}?limited=false&personal=false'
 
   r = await requests.get(url = URL)
@@ -34,29 +39,61 @@ async def update_all_emotes():
   channel_emotes = data["channelEmotes"]
   shared_emotes = data["sharedEmotes"]
 
-  bttv_dictionary = {};
   for emote in channel_emotes:
     bttv_dictionary[emote["code"]] = emote["id"]
 
   for emote in shared_emotes:
     bttv_dictionary[emote["code"]] = emote["id"]
 
+  # get global BTTV emotes
+
+  print("getting BTTV global emotes")
+
+  URL = "https://api.betterttv.net/3/cached/emotes/global"
+
+  r = await requests.get(url = URL)
+  global_emotes = r.json()
+
+  pprint(global_emotes)
+  print(len(global_emotes))
+
+  for emote in global_emotes:
+    bttv_dictionary[emote["code"]] = emote["id"]
+
+  # FrankerFacez
+
+  ff_dictionary = {};
 
   # gets all FF channel emotes
   print("getting FF emotes")
+
   URL = "https://api.frankerfacez.com/v1/room/admiralbulldog"
 
   r = await requests.get(url = URL)
   data = r.json()
 
-  ff_emotes = list(data["sets"].values())[0]["emoticons"]
+  ff_channel_emotes = list(data["sets"].values())[0]["emoticons"]
 
-  ff_dictionary = {};
-  for emote in ff_emotes:
+  for emote in ff_channel_emotes:
     ff_dictionary[emote["name"]] = emote["id"]
 
 
-  
+  print("getting ff global emotes")
+  URL = "https://api.frankerfacez.com/v1/set/global"
+
+  r = await requests.get(url = URL)
+  data = r.json()
+
+  ff_global_emotes = list(data["sets"].values())[0]["emoticons"]
+
+  # pprint(ff_global_emotes);
+  # print(len(ff_global_emotes))
+
+  for emote in ff_global_emotes:
+    ff_dictionary[emote["name"]] = emote["id"]
+
+
+
 
   redis = await aioredis.create_redis_pool(REDIS)
 
