@@ -17,7 +17,8 @@ from concurrent.futures import ProcessPoolExecutor
 
 load_dotenv()
 
-SUBREDDIT = "TestBotAdmiral" if os.environ.get("APP_ENV") == "dev" else "AdmiralBulldog"
+# SUBREDDIT = "TestBotAdmiral" if os.environ.get("APP_ENV") == "dev" else "AdmiralBulldog"
+SUBREDDIT = "TestBotAdmiral"
 SIGNATURE = """---
 ^(From Just another Sadge Reddit Bot) [*^(AdmiralClockwerk)*](https://youtu.be/JNwLnAw72KE?t=210)
 
@@ -84,7 +85,7 @@ async def monitor_comments_for_bttv_emotes():
       subreddit = await reddit.subreddit(SUBREDDIT, fetch=True)
     
       print("monitoring comments stream for emotes...")
-      
+
       async for comment in subreddit.stream.comments(skip_existing=True):
         if (comment.author == bot_account): 
           print("don't reply to comment from self")
