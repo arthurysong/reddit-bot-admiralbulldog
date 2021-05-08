@@ -50,6 +50,7 @@ async def monitor_submissions_for_ronnie():
 
       subreddit = await reddit.subreddit(SUBREDDIT, fetch=True)
 
+      print("monitoring submission stream for ronnie...")
       async for submission in subreddit.stream.submissions(skip_existing=True):
         if check_string_for_ronnie(submission.title):
           print("submission found")
@@ -82,7 +83,8 @@ async def monitor_comments_for_bttv_emotes():
 
       subreddit = await reddit.subreddit(SUBREDDIT, fetch=True)
     
-
+      print("monitoring comments stream for emotes...")
+      
       async for comment in subreddit.stream.comments(skip_existing=True):
         if (comment.author == bot_account): 
           print("don't reply to comment from self")

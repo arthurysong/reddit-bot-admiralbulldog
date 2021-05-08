@@ -1,3 +1,6 @@
+TODO get twitch tv global emotes as well??
+TODO add playsounds?
+
 t2.micro 0.555 GiB is enough for elasticache..
 recreate the elasticache with no read replicas. it's too expensive for me to have reeplicas :P
 
