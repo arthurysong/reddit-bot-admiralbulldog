@@ -15,8 +15,9 @@
 # EOT
 
 git pull 
-echo "test"
-echo $BOT_ID
-kill -9 $BOT_ID
+# echo "test"
+# echo $BOT_ID
+kill -9 $(cat pid.txt)
 python3 -u main.py >> output.txt &
-BOT_ID=$! # set BOT_ID equal to process running
+echo $! > pid.txt
+# BOT_ID=$! # set BOT_ID equal to process running
