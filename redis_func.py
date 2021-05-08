@@ -25,6 +25,8 @@ async def update_all_emotes():
   Sets all emotes in Redis 
   """
 
+  print(REDIS)
+
   # BTTV
 
   bttv_dictionary = {};
