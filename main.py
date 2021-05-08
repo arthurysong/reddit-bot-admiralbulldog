@@ -25,7 +25,7 @@ SIGNATURE = """---
 [*^(Source)*](https://github.com/arthurysong/reddit-bot-admiralbulldog) *^(|)* 
 [*^(Creator)*](https://www.reddit.com/user/Sonareads)
 """
-REPLY_RONNIE = """_You have summoned the great Donger's archnemesis [***Ronnie Coleman***](https://generationiron.com/wp-content/uploads/2019/12/Ronnie-Coleman-Reveals-Who-Handed-Him-His-Most-Bitter-Loss.jpg)
+REPLY_RONNIE = """_You have summoned the great Donger's archnemesis [***Ronnie Coleman***](https://generationiron.com/wp-content/uploads/2019/12/Ronnie-Coleman-Reveals-Who-Handed-Him-His-Most-Bitter-Loss.jpg)_
 
 %s""" % (SIGNATURE)
 
