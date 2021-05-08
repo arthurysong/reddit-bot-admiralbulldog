@@ -19,7 +19,7 @@ load_dotenv()
 
 SUBREDDIT = "TestBotAdmiral" if os.environ.get("APP_ENV") == "dev" else "AdmiralBulldog"
 SIGNATURE = """---
-From Just another Sadge Reddit Bot
+^(From Just another Sadge Reddit Bot) [*^(AdmiralClockwerk)*](https://youtu.be/JNwLnAw72KE?t=210)
 
 [*^(Issues & Suggestions)*](https://github.com/arthurysong/reddit-bot-admiralbulldog/issues) *^(|)* 
 [*^(Source)*](https://github.com/arthurysong/reddit-bot-admiralbulldog) *^(|)* 
@@ -98,10 +98,12 @@ async def monitor_comments_for_bttv_emotes():
 
         if (bttv_emotes_found or ff_emotes_found):
           for emote in bttv_emotes_found:
-            reply += f'\n\n[{emote}](https://cdn.betterttv.net/emote/{bttv_emotes[emote]}/3x)'
+            emote_size = '3x' # avail size is 1x, 2x, 3x
+            reply += f'\n\n* [{emote}](https://cdn.betterttv.net/emote/{bttv_emotes[emote]}/{emote_size})'
 
           for emote in ff_emotes_found:
-            reply += f'\n\n[{emote}](https://cdn.frankerfacez.com/emote/{ff_emotes[emote]}/1)'
+            emote_size = '4' # avail size is 1, 2, 4
+            reply += f'\n\n* [{emote}](https://cdn.frankerfacez.com/emote/{ff_emotes[emote]}/{emote_size})'
 
           print("emote found")
           reply += f'\n\n {SIGNATURE}'

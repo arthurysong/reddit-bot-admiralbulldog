@@ -166,5 +166,3 @@ async def update_emotes_daily_process():
     await update_all_emotes()
     print("updated emotes!")
     await asyncio.sleep(86400);
-
-asyncio.run(update_all_emotes())
