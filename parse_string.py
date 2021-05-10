@@ -31,9 +31,15 @@ def parse_string(comment, emotes):
 
   return list(emote_present)
 
-# def emote_match(comment, emotes):
-# 
-  # if ?
+def check_string_for_sadge(comment):
+  """Check if normalized comment contains sadge"""
+
+  trimmed_str = comment.translate(str.maketrans(string.punctuation, ' '*len(string.punctuation))).lower()
+  for word in trimmed_str.split(" "):
+    if word == "sadge":
+      return True
+  
+  return False
 
 def check_string_for_ronnie(text):
   "check if string contains the substring 'ronnie coleman'"
@@ -49,3 +55,5 @@ def check_string_for_ronnie(text):
 # print(parse_string(test_string, emotes))
 # print(list(emotes))
 # print(parse_string("monkaS LUL", emotes))
+
+# print(check_string_for_sadge("....sadg..."))
