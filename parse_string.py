@@ -14,6 +14,9 @@ emotes = {
 test_string = "Sadge.. you will be remembered"
 
 def parse_string(comment, emotes):
+  """Check if string contains any emotes in Redis db"""
+
+  
   """accept string + a list of emotes, parse the string and return any found emotes.
   any punctuation in original string is replaced with white space. RETURNS a list of found emotes.
   only returns uniquely found emotes"""
@@ -28,6 +31,9 @@ def parse_string(comment, emotes):
 
   return list(emote_present)
 
+# def emote_match(comment, emotes):
+# 
+  # if ?
 
 def check_string_for_ronnie(text):
   "check if string contains the substring 'ronnie coleman'"

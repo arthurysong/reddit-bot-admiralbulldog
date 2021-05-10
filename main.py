@@ -91,26 +91,49 @@ async def monitor_comments_for_bttv_emotes():
           print("don't reply to comment from self")
           continue
 
-        reply = "_Ah! A Twitch emote user: no doubt a man of exquisite culture and refined tastes. 🍷🍷🍷_"
-        print("comment", comment.body)
+        # the comment body should just match an emote EXACTLY
+        # not contain the emote because I don't want to spam the subreddit
+
+        # bttv_emote = emote_match(comment.body, bttv_emotes)
+        reply = ""
+
+        
+        if comment.body in bttv_emotes.keys():
+          print("emote found")
+          emote = comment.body
+          emote_size = '3x' # avail size is 1x, 2x, 3x
+          reply += f'\n\n* [{emote}](https://cdn.betterttv.net/emote/{bttv_emotes[emote]}/{emote_size})'
+          reply += f'\n\n {SIGNATURE}'
+          await comment.reply(reply)
+
+        elif comment.body in ff_emotes.keys():
+          print("emote found")
+          emote = comment.body
+          emote_size = '4' # avail size is 1, 2, 4
+          reply += f'\n\n* [{emote}](https://cdn.frankerfacez.com/emote/{ff_emotes[emote]}/{emote_size})'
+          reply += f'\n\n {SIGNATURE}'
+          await comment.reply(reply)
+
+        # reply = "_Ah! A Twitch emote user: no doubt a man of exquisite culture and refined tastes. 🍷🍷🍷_"
+        # print("comment", comment.body)
 
         # check for bttv emotes
 
-        bttv_emotes_found = parse_string(comment.body, bttv_emotes)
-        ff_emotes_found = parse_string(comment.body, ff_emotes)
+        # bttv_emotes_found = parse_string(comment.body, bttv_emotes)
+        # ff_emotes_found = parse_string(comment.body, ff_emotes)
 
-        if (bttv_emotes_found or ff_emotes_found):
-          for emote in bttv_emotes_found:
-            emote_size = '3x' # avail size is 1x, 2x, 3x
-            reply += f'\n\n* [{emote}](https://cdn.betterttv.net/emote/{bttv_emotes[emote]}/{emote_size})'
+        # if (bttv_emotes_found or ff_emotes_found):
+        #   for emote in bttv_emotes_found:
+        #     emote_size = '3x' # avail size is 1x, 2x, 3x
+        #     reply += f'\n\n* [{emote}](https://cdn.betterttv.net/emote/{bttv_emotes[emote]}/{emote_size})'
 
-          for emote in ff_emotes_found:
-            emote_size = '4' # avail size is 1, 2, 4
-            reply += f'\n\n* [{emote}](https://cdn.frankerfacez.com/emote/{ff_emotes[emote]}/{emote_size})'
+        #   for emote in ff_emotes_found:
+        #     emote_size = '4' # avail size is 1, 2, 4
+        #     reply += f'\n\n* [{emote}](https://cdn.frankerfacez.com/emote/{ff_emotes[emote]}/{emote_size})'
 
-          print("emote found")
-          reply += f'\n\n {SIGNATURE}'
-          await comment.reply(reply)
+        #   print("emote found")
+        #   reply += f'\n\n {SIGNATURE}'
+        #   await comment.reply(reply)
     except asyncprawcore.exceptions.RequestException:
       logging.warning("emote process couldn't connect to praw.. restarting process")
       await asyncio.sleep(1)
