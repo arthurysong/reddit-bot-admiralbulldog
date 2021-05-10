@@ -11,6 +11,7 @@ import aioredis
 import asyncprawcore
 import logging
 import aioschedule as schedule
+import sys, traceback
 
 from redis_func import update_emotes_daily_process, get_bttv_emotes, get_ff_emotes
 from concurrent.futures import ProcessPoolExecutor
@@ -67,8 +68,15 @@ async def monitor_comments_for_bttv_emotes():
 
   while 1:
     try: 
-      bttv_emotes = await get_bttv_emotes();
-      ff_emotes = await get_ff_emotes();
+      try: 
+        bttv_emotes = await get_bttv_emotes();
+        ff_emotes = await get_ff_emotes();
+      except Exception as inst:
+        # if can't connect to redis just shut off for now...
+        print(type(inst))
+        print(inst.args)
+        print("could not connect to redis")
+        sys.exit(3)
 
       reddit = asyncpraw.Reddit(
           client_id=os.environ.get("CLIENT_ID"),
@@ -102,7 +110,7 @@ async def monitor_comments_for_bttv_emotes():
           print("emote found")
           emote = comment.body
           emote_size = '3x' # avail size is 1x, 2x, 3x
-          reply += f'\n\n* [{emote}](https://cdn.betterttv.net/emote/{bttv_emotes[emote]}/{emote_size})'
+          reply += f'\n\n[{emote}](https://cdn.betterttv.net/emote/{bttv_emotes[emote]}/{emote_size})'
           reply += f'\n\n {SIGNATURE}'
           await comment.reply(reply)
 
@@ -110,7 +118,7 @@ async def monitor_comments_for_bttv_emotes():
           print("emote found")
           emote = comment.body
           emote_size = '4' # avail size is 1, 2, 4
-          reply += f'\n\n* [{emote}](https://cdn.frankerfacez.com/emote/{ff_emotes[emote]}/{emote_size})'
+          reply += f'\n\n[{emote}](https://cdn.frankerfacez.com/emote/{ff_emotes[emote]}/{emote_size})'
           reply += f'\n\n {SIGNATURE}'
           await comment.reply(reply)
 
