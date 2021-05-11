@@ -26,7 +26,7 @@ _Old version of AC_
 
 Maybe, it'd be less spammy if AC could respond with the emote image instead of a link to the image, but Reddit doesn't allow images to be added directly into comments to avoid spammy cluster-f of images like 4-chan's threads so that wasn't a possbility. AND, if I did want to create something that brings Twitch.tv emotes to Reddit, it'd be much better to have a chrome extension similar to BTTV's chrome extension than having a bot respond to each comment causing clutter.
 
-So in short, in order to avoid spamming the subreddit, I decided to remove the bot's responses to TTV emotes and create some other project down the line that is a chrome extension and does just that. Instead, I made AC only respond to, unequivacally, the best twitch.tv emote, Sadge.
+So in short, in order to avoid spamming the subreddit, I decided to remove the bot's responses to TTV emotes and instead, I made AC only respond to, unequivacally, the best twitch.tv emote, Sadge.
 
 ![sadge](https://cdn.frankerfacez.com/emote/472535/4)
 
