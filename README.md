@@ -11,7 +11,7 @@ AdmiralClockwerk: A bot that monitors Admiral Bulldog's subreddit and responds t
 ![example](https://i.imgur.com/GDxjDcn.png)
 
 # Contributing
-Please! If you want to contribute your favorite quote about sadness submit a pull request with the quote added to conf.py. If you're not familiar with GitHub, you can submit a issue or suggestion with the quote + author and I can add it to the bot's list of randomly selected quotes.
+Please! If you want to contribute your favorite quote about Sadge submit a pull request with the quote added to `conf.py`. If you're not familiar with GitHub, you can submit an issue or suggestion with the quote + author and I can add it to the bot's list of randomly selected quotes.
 
 # Thoughts...
 Initially, I wanted this bot to be similar to r/Dota2's [dota-responses_bot](https://github.com/Jonarzz/DotaResponsesRedditBot) that replies to any Dota voice lines with a link to the audiofile. I wanted AdmiralClockwerk (AC) to do something similar but with Twitch emotes. 
@@ -19,14 +19,14 @@ Initially, I wanted this bot to be similar to r/Dota2's [dota-responses_bot](htt
 So, after about a week of work, I was able to get this bot working: I found a way to store all of Bulldog's Twitch channel's
 BTTV and FrankerFacez emotes in Redis (which was also updating daily), and AC was successfully responding to any comments containing AdmiralBulldog's emotes. The problem was I didn't want the bot to be spamming the subreddit and after looking through a few of the top threads at the time, I realized about 70-80% of the comments would trigger a response from AC. 
 
-Bad. Ideally, I wanted the bot to be responding to at most one or two comments in a thread and maybe responding to 1 out of every 4 thread. Any more than that estimated amount I was sure the bot would probably get banned and most redditors would get sick of it.
+_Bad._ Ideally, I wanted the bot to be responding to at most one or two comments in a thread and maybe responding to 1 out of every 4 thread. Any more than that estimated amount and I was sure the bot would probably get banned and most redditors would get sick of it.
 
-Every thread in r/AdmiralBulldog would look like this...
+_Old version of AC_
 ![responses posted by AC ver. 1](https://i.imgur.com/SkLshVg.png)
 
-Maybe, it'd be less spammy if I could respond with the emote image instead of a link to the image, but Reddit doesn't allow images to be added directly into comments to avoid spammy cluster-f of images like 4-chan's threads so that wasn't a possbility. AND, if I did want to have the emotes show up directly in the comments, it'd be much better to have a chrome extension similar to BTTV's chrome extension than having a bot respond to each comment causing clutter. An extension seems much more well suited for the purpose of bringing Twitch emotes to Reddit. 
+Maybe, it'd be less spammy if AC could respond with the emote image instead of a link to the image, but Reddit doesn't allow images to be added directly into comments to avoid spammy cluster-f of images like 4-chan's threads so that wasn't a possbility. AND, if I did want to create something that brings Twitch.tv emotes to Reddit, it'd be much better to have a chrome extension similar to BTTV's chrome extension than having a bot respond to each comment causing clutter.
 
-So in short, in order to avoid spamming the subreddit, I decided to move "adding BTTV emotes to Reddit" to some project down the line, and instead, I made AC only respond to, unequivacally, the best twitch.tv emote, Sadge.
+So in short, in order to avoid spamming the subreddit, I decided to remove the bot's responses to TTV emotes and create some other project down the line that is a chrome extension and does just that. Instead, I made AC only respond to, unequivacally, the best twitch.tv emote, Sadge.
 
 ![sadge](https://cdn.frankerfacez.com/emote/472535/4)
 
