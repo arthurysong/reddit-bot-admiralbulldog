@@ -9,7 +9,7 @@ AdmiralClockwerk
 AdmiralClockwerk: A bot that monitors Admiral Bulldog's subreddit and responds to (1) **post** title's containing 'ronnie coleman' and (2) any comments containing 'sadge'. AdmiralClockwerk will respond to Sadge users with motivational quotes from historical figures to uplift Redditors from their deep Sadge.
 
 # Thoughts...
-Initially, I wanted this bot to be similar to r/Dota2's comment_responses_bot that replies to any Dota voice lines with a link to the audiofile. I wanted AdmiralClockwerk (AC) to do something similar but with Twitch emotes. 
+Initially, I wanted this bot to be similar to r/Dota2's [dota-responses_bot](https://github.com/Jonarzz/DotaResponsesRedditBot) that replies to any Dota voice lines with a link to the audiofile. I wanted AdmiralClockwerk (AC) to do something similar but with Twitch emotes. 
 
 So, after about a week of work, I was able to get this bot working: I found a way to store all of Bulldog's Twitch channel's
 BTTV and FrankerFacez emotes in Redis (which was also updated daily), and AC was successfully responding to any comments containing AdmiralBulldog's emotes. The problem was I didn't want the bot to be spamming the subreddit and after looking through a few of the threads at the time, I realized about 70-80% of the comments would trigger a response from AC. 
