@@ -51,7 +51,7 @@ def decorate_sadge(quote):
 def markdown_from_sadge_tuple(tuple):
   """From a Sadge tuple in conf.py return the markdown to be used as a comment"""
 
-  return f'*"{decorate_sadge(tuple[0])}"*" —{tuple[1]}'
+  return f'*"{decorate_sadge(tuple[0])}"* —{tuple[1]}'
 
 def check_string_for_ronnie(text):
   "check if string contains the substring 'ronnie coleman'"
