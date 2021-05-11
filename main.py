@@ -12,6 +12,8 @@ import random
 
 load_dotenv()
 
+print("monitoring ", SUBREDDIT)
+
 async def monitor_submissions_for_ronnie():
   """this process will monitor only submissions and reply with an image of RONNIE COLEMAN. does not 
   monitor any comments"""
