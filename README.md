@@ -1,4 +1,11 @@
-# AdmiralClockwerk
+<h1 align="center">
+AdmiralClockwerk
+</h1>
+
+<p align="center">
+  <img src="https://cdn.frankerfacez.com/emote/472535/4)"/>
+</p>
+
 AdmiralClockwerk: A bot that monitors Admiral Bulldog's subreddit and responds to (1) **post** title's containing 'ronnie coleman' and (2) any comments containing 'sadge'. AdmiralClockwerk will respond to Sadge users with motivational quotes from historical figures to uplift Redditors from their deep Sadge.
 
 # Thoughts...
@@ -16,7 +23,7 @@ Maybe, it'd be less spammy if I could respond with the emote images instead of a
 
 So in short, in order to avoid spamming the subreddit, I decided to move this feature to some project down the line, and instead, I made AC only respond to ,unequivacally, the best twitch.tv emote, Sadge.
 
-![sadge](https://cdn.frankerfacez.com/emote/472535/4))
+![sadge](https://cdn.frankerfacez.com/emote/472535/4)
 
 --and also AC responds to Mr. Bulldog's archrival, Ronnie Coleman.
 ## How does it work?
