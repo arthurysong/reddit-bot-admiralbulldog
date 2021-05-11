@@ -8,7 +8,10 @@ AdmiralClockwerk
 
 AdmiralClockwerk: A bot that monitors Admiral Bulldog's subreddit and responds to (1) **post** title's containing 'ronnie coleman' and (2) any comments containing 'sadge'. AdmiralClockwerk will respond to Sadge users with motivational quotes from historical figures to uplift Redditors from their deep Sadge.
 
-![example](https://i.imgur.com/gRotPSy.png)
+![example](https://i.imgur.com/GDxjDcn.png)
+
+# Contributing
+Please! If you want to contribute your favorite quote about sadness submit a pull request with the quote added to conf.py. If you're not familiar with GitHub, you can submit a issue or suggestion with the quote + author and I can add it to the bot's list of randomly selected quotes.
 
 # Thoughts...
 Initially, I wanted this bot to be similar to r/Dota2's [dota-responses_bot](https://github.com/Jonarzz/DotaResponsesRedditBot) that replies to any Dota voice lines with a link to the audiofile. I wanted AdmiralClockwerk (AC) to do something similar but with Twitch emotes. 
