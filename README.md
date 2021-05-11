@@ -1,5 +1,6 @@
 # AdmiralClockwerk
 
+This is outdated (TODO update the readme)...
 AdmiralClockwerk: A bot that checks for twitch emotes in Admiral Bulldog's subreddit. The bot will respond to any comments that contains a BTTV emote with a link to the image of the emote(s). (Currently, AdmiralClockwerk only responds to comments that contain one of the top 100 BTTV Global emotes.. I'm looking to add Bulldog's channel emotes as well) 
 
 ## How does it work?

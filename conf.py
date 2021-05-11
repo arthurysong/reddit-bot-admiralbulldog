@@ -18,17 +18,17 @@ SADGE_RESPONSES = [
   ("Sadge are words that need to be written.", "Paulo Coelho"),
 ]
 
-SUBREDDIT = "TestBotAdmiral"
+# SUBREDDIT = "TestBotAdmiral"
+SUBREDDIT = "AdmiralBulldog"
 SIGNATURE = """---
 
 ^(From Just another Sadge Reddit Bot)
-
-[*^(Add your favorite quote about Sadge to my available responses!)*](https://github.com/arthurysong/reddit-bot-admiralbulldog/issues)
 
 [*^(Issues & Suggestions)*](https://github.com/arthurysong/reddit-bot-admiralbulldog/issues) *^(|)* 
 [*^(Source)*](https://github.com/arthurysong/reddit-bot-admiralbulldog) *^(|)* 
 [*^(Creator)*](https://www.reddit.com/user/Sonareads)
 """
+
 REPLY_RONNIE = """_You have summoned the great Donger's archnemesis [***Ronnie Coleman***](https://generationiron.com/wp-content/uploads/2019/12/Ronnie-Coleman-Reveals-Who-Handed-Him-His-Most-Bitter-Loss.jpg)_
 
 %s""" % (SIGNATURE)
