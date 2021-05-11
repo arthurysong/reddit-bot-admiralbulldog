@@ -8,19 +8,23 @@ deep Sadge.
 ~~AdmiralClockwerk: A bot that checks for twitch emotes in Admiral Bulldog's subreddit. The bot will respond to any comments that contains a BTTV emote with a link to the image of the emote(s). (Currently, AdmiralClockwerk only responds to comments that contain one of the top 100 BTTV Global emotes.. I'm looking to add Bulldog's channel emotes as well)~~
 
 # Thoughts...
-Initially, I wanted this bot to be similar to r/Dota2's comment_responses_bot that replies to any Dota voice lines with a link to the audiofile. I wanted AdmiralClockwerk (AC) to do something similar but with Twitch emotes. So I was able to get it working, I found a way to store all of Bulldog's Twitch channel 
-BTTV and FrankerFacez emotes in Redis (which updated daily using BTTV and FF api) but the problem was I didn't want the bot to be spamming the subreddit with links to emotes. In order to see the number of responses the bot would be posting, I checked a 10-20 of the top trending posts at the time. My bot would respond to ~70% of the comments, and I think it'd be very annoying for a lot of users to see a bunch of emote links being spammed in the thread...
+Initially, I wanted this bot to be similar to r/Dota2's comment_responses_bot that replies to any Dota voice lines with a link to the audiofile. I wanted AdmiralClockwerk (AC) to do something similar but with Twitch emotes. 
+
+So, after about a week of work, I was able to get this bot working: I found a way to store all of Bulldog's Twitch channel's
+BTTV and FrankerFacez emotes in Redis (which was also updated daily), and AC was successfully responding to any comments containing AdmiralBulldog's emotes. The problem was I didn't want the bot to be spamming the subreddit and after looking through a few of the threads at the time, I realized about 70-80% of the comments would trigger a response from AC. 
+
+Bad. I want the bot to be responding at most once or twice to comments in a thread and maybe like 1 out of every 4 thread. I want the bot to be a cool feature that Ledditors enjoy not some annoying bot that spams the subreddit.
 
 Every thread in r/AdmiralBulldog would look like this...
 ![responses posted by AC ver. 1](https://i.imgur.com/SkLshVg.png)
 
-I thought maybe it'd be better if instead of posting links, I could directly post the image of the emote sjdhf;aowuenfp9oa hj234p97fhqp39 48hgfp9refpashjd;lkfansdpi9fhasd;jvhasd;lvkahsldjkfgba;lsdkhfn; ajfbhg;kajsdnvkabs dfvkjabnsdlkvjasdg
+Maybe, it'd be less spammy if I could respond with the emote images instead of a link to an image, but Reddit doesn't allow images to be added directly into comments to avoid spammy cluster-f of images like 4-chan's threads so that wasn't a possbility. AND, if I did want to have the actual emotes show up in the thread it'd be much better to have a chrome extension similar to BTTV's chrome extension. An extension that replaces the emotes directly in the content rather than a bot that responds to each comment with the emote. An extension seems much more well suited for the purpose of bringing Twitch emotes to Reddit. 
 
-Maybe, it'd be better if I could respond with the actual images themselves instead of a link to an image. That would be much better.... but Reddit doesn't allow images to be added directly into comments to avoid spam-like cluster-f's threads of images so that was a no. And if I DID want to have the actual emotes show up in the thread it'd be MUCH better to just have a chrome extension similar to what BTTV has. An extension that just replaces the emotes directly in the content rather than a bot that responds to each comment with the used emote...
-
-So in short, in order to avoid spamming the subreddit and also postpone some features for maybe a better project down the line, I just made AC to only respond to the unequivacally best Twitch.tv emote Sadge and also of course to Mr. Bulldog's archrival, Ronnie Coleman.
+So in short, in order to avoid spamming the subreddit, I decided to move this feature to some project down the line, and instead, I made AC only respond to ,unequivacally, the best twitch.tv emote, Sadge.
 
 ![sadge](https://cdn.frankerfacez.com/emote/472535/4))
+
+--and also AC responds to Mr. Bulldog's archrival, Ronnie Coleman.
 ## How does it work?
 
 ~~The bot stores the top 100 global emotes from BTTV's API (Better Twitch TV) in a Redis db. Once a day, the bot will update the database with any new emotes in the top 100.~~ 
