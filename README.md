@@ -3,7 +3,7 @@ AdmiralClockwerk
 </h1>
 
 <p align="center">
-  <img src="https://cdn.frankerfacez.com/emote/472535/4)"/>
+  <img src="https://cdn.frankerfacez.com/emote/472535/4"/>
 </p>
 
 AdmiralClockwerk: A bot that monitors Admiral Bulldog's subreddit and responds to (1) **post** title's containing 'ronnie coleman' and (2) any comments containing 'sadge'. AdmiralClockwerk will respond to Sadge users with motivational quotes from historical figures to uplift Redditors from their deep Sadge.
