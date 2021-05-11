@@ -2,7 +2,7 @@
 
 from dotenv import load_dotenv
 from urllib.parse import quote_plus
-from parse_string import parse_string, check_string_for_ronnie
+from parse_string import parse_string, check_string_for_ronnie, check_string_for_sadge
 import os
 # import praw
 import asyncpraw
@@ -21,7 +21,8 @@ load_dotenv()
 # SUBREDDIT = "TestBotAdmiral" if os.environ.get("APP_ENV") == "dev" else "AdmiralBulldog"
 SUBREDDIT = "TestBotAdmiral"
 SIGNATURE = """---
-^(From Just another Sadge Reddit Bot) [*^(AdmiralClockwerk)*](https://youtu.be/JNwLnAw72KE?t=210)
+> It's always a good time to be Sadge
+^(From Just another Sadge Reddit Bot)
 
 [*^(Issues & Suggestions)*](https://github.com/arthurysong/reddit-bot-admiralbulldog/issues) *^(|)* 
 [*^(Source)*](https://github.com/arthurysong/reddit-bot-admiralbulldog) *^(|)* 
@@ -105,20 +106,13 @@ async def monitor_comments_for_bttv_emotes():
         # bttv_emote = emote_match(comment.body, bttv_emotes)
         reply = ""
 
-        
-        if comment.body in bttv_emotes.keys():
-          print("emote found")
-          emote = comment.body
-          emote_size = '3x' # avail size is 1x, 2x, 3x
-          reply += f'\n\n[{emote}](https://cdn.betterttv.net/emote/{bttv_emotes[emote]}/{emote_size})'
-          reply += f'\n\n {SIGNATURE}'
-          await comment.reply(reply)
+        # 
 
-        elif comment.body in ff_emotes.keys():
-          print("emote found")
-          emote = comment.body
-          emote_size = '4' # avail size is 1, 2, 4
-          reply += f'\n\n[{emote}](https://cdn.frankerfacez.com/emote/{ff_emotes[emote]}/{emote_size})'
+        if check_string_for_sadge(comment.body):
+          print("sadge found!")
+          sadge_ff_id = "472535" # emote id for Sadge in frankerfacez api
+          emote_size = "4" # avail size is 1, 2, 4
+          reply += f'\n\n[Sadge](https://cdn.frankerfacez.com/emote/{sadge_ff_id}/{emote_size})'
           reply += f'\n\n {SIGNATURE}'
           await comment.reply(reply)
 
