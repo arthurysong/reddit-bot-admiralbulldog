@@ -1,3 +1,5 @@
+pipreqs ./ --force
+
 TODO get twitch tv global emotes as well??
 TODO add playsounds?
 
