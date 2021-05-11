@@ -7,7 +7,7 @@ import os
 # import praw
 import asyncpraw
 import asyncio
-import aioredis
+# import aioredis
 import asyncprawcore
 import logging
 import aioschedule as schedule
@@ -69,15 +69,15 @@ async def monitor_comments_for_bttv_emotes():
 
   while 1:
     try: 
-      try: 
-        bttv_emotes = await get_bttv_emotes();
-        ff_emotes = await get_ff_emotes();
-      except Exception as inst:
-        # if can't connect to redis just shut off for now...
-        print(type(inst))
-        print(inst.args)
-        print("could not connect to redis")
-        sys.exit(3)
+      # try: 
+      #   bttv_emotes = await get_bttv_emotes();
+      #   ff_emotes = await get_ff_emotes();
+      # except Exception as inst:
+      #   # if can't connect to redis just shut off for now...
+      #   print(type(inst))
+      #   print(inst.args)
+      #   print("could not connect to redis")
+      #   sys.exit(3)
 
       reddit = asyncpraw.Reddit(
           client_id=os.environ.get("CLIENT_ID"),
@@ -93,7 +93,7 @@ async def monitor_comments_for_bttv_emotes():
 
       subreddit = await reddit.subreddit(SUBREDDIT, fetch=True)
     
-      print("monitoring comments stream for emotes...")
+      print("monitoring comments stream for sadge...")
 
       async for comment in subreddit.stream.comments(skip_existing=True):
         if (comment.author == bot_account): 
