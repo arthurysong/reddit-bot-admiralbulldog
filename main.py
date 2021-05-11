@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from dotenv import load_dotenv
-from string_utils import check_string_for_ronnie, check_string_for_sadge
+from string_utils import check_string_for_ronnie, check_string_for_sadge, markdown_from_sadge_tuple
 from conf import SADGE_RESPONSES, SUBREDDIT, SIGNATURE, REPLY_RONNIE
 import os
 import asyncpraw
@@ -71,10 +71,12 @@ async def monitor_comments_for_sadge():
 
         if check_string_for_sadge(comment.body):
           print("sadge found!")
-          sadge_ff_id = "472535" # emote id for Sadge in frankerfacez api
-          emote_size = "4" # avail size is 1, 2, 4
-          reply += random.choice(SADGE_RESPONSES)[0]
-          reply += f'\n\n> It\'s always a good time to be [Sadge](https://cdn.frankerfacez.com/emote/{sadge_ff_id}/{emote_size})'
+          # sadge_ff_id = "472535" # emote id for Sadge in frankerfacez api
+          # emote_size = "4" # avail size is 1, 2, 4
+          
+          random_quote_about_sadge = random.choice(SADGE_RESPONSES)
+          reply += markdown_from_sadge_tuple(random_quote_about_sadge)
+          # reply += f'\n\n> It\'s always a good time to be [Sadge](https://cdn.frankerfacez.com/emote/{sadge_ff_id}/{emote_size})'
           reply += f'\n\n {SIGNATURE}'
           await comment.reply(reply)
 
