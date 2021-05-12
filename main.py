@@ -35,7 +35,8 @@ async def monitor_submissions_for_ronnie():
       print("monitoring submission stream for ronnie...")
       async for submission in subreddit.stream.submissions(skip_existing=True):
         if check_string_for_ronnie(submission.title):
-          print("submission found")
+          print("ronnie submission found")
+          print(submission.url)
           await submission.reply(REPLY_RONNIE)
     except asyncprawcore.exceptions.RequestException:
       logging.warning("ronnie process couldn't connect to praw.. restarting process")
@@ -73,12 +74,10 @@ async def monitor_comments_for_sadge():
 
         if check_string_for_sadge(comment.body):
           print("sadge found!")
-          # sadge_ff_id = "472535" # emote id for Sadge in frankerfacez api
-          # emote_size = "4" # avail size is 1, 2, 4
+          print(f'https://reddit.com{comment.permalink}')
           
           random_quote_about_sadge = random.choice(SADGE_RESPONSES)
           reply += markdown_from_sadge_tuple(random_quote_about_sadge)
-          # reply += f'\n\n> It\'s always a good time to be [Sadge](https://cdn.frankerfacez.com/emote/{sadge_ff_id}/{emote_size})'
           reply += f'\n\n {SIGNATURE}'
           await comment.reply(reply)
 

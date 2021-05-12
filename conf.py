@@ -1,5 +1,7 @@
+import os
 
 # configuration files for bot
+SUBREDDIT = "TestBotAdmiral" if os.environ.get("APP_ENV") != "dev" else "AdmiralBulldog"
 
 # Sadge responses
 # in the future i want a bunch of different responses that the bot will choose from 
@@ -25,8 +27,6 @@ SADGE_RESPONSES = [
   ("The word ‘happy’ would lose its meaning if it were not balanced by Sadge.", "Carl Jung"),
 ]
 
-# SUBREDDIT = "TestBotAdmiral"
-SUBREDDIT = "AdmiralBulldog"
 SIGNATURE = """---
 
 ^(From Just another Sadge Reddit Bot)
