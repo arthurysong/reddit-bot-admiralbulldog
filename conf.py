@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 # configuration files for bot
-SUBREDDIT = "TestBotAdmiral" if os.environ.get("APP_ENV") != "dev" else "AdmiralBulldog"
+SUBREDDIT = "TestBotAdmiral" if os.environ.get("APP_ENV") == "dev" else "AdmiralBulldog"
 
 # Sadge responses
 # in the future i want a bunch of different responses that the bot will choose from 
