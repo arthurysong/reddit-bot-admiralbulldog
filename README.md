@@ -37,7 +37,7 @@ So in short, in order to avoid spamming the subreddit, I decided to remove the b
 ## Dev
 
 1. Install dependencies: `pip install -r /path/to/requirements.txt`
-2. Set `.env` file (see below for ENV vars)
+2. Set environment variables in `.env` file (see below for ENV vars)
 3. ~~Run local Redis running~~
 4. Run `python3 main.py`
 
