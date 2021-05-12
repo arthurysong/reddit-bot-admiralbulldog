@@ -1,5 +1,6 @@
 import os
-
+from dotenv import load_dotenv
+load_dotenv()
 # configuration files for bot
 SUBREDDIT = "TestBotAdmiral" if os.environ.get("APP_ENV") != "dev" else "AdmiralBulldog"
 
