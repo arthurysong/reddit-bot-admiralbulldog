@@ -28,14 +28,20 @@ SADGE_RESPONSES = [
   ("The word ‘happy’ would lose its meaning if it were not balanced by Sadge.", "Carl Jung"),
 ]
 
-SIGNATURE = """---
+# SIGNATURE = """---
 
-^(From Just another Sadge Reddit Bot)
+# ^(*Beep* *Boop*. Don't be Sadge. It'll be okay :\).) *^(|)* 
+# [*^(Source)*](https://github.com/arthurysong/reddit-bot-admiralbulldog)
 
-[*^(Issues & Suggestions)*](https://github.com/arthurysong/reddit-bot-admiralbulldog/issues) *^(|)* 
-[*^(Source)*](https://github.com/arthurysong/reddit-bot-admiralbulldog) *^(|)* 
-[*^(Creator)*](https://www.reddit.com/user/Sonareads)
-"""
+# [*^(Issues & Suggestions)*](https://github.com/arthurysong/reddit-bot-admiralbulldog/issues) *^(|)* 
+# [*^(Source)*](https://github.com/arthurysong/reddit-bot-admiralbulldog) *^(|)* 
+# [*^(Creator)*](https://www.reddit.com/user/Sonareads)
+# """
+
+SIGNATURE = """
+
+^(\*Beep\* \*Boop\*. Don't be Sadge. It'll be okay :\).) *^(|)* 
+[*^(Source)*](https://github.com/arthurysong/reddit-bot-admiralbulldog)"""
 
 REPLY_RONNIE = """_You have summoned the great Donger's archnemesis [***Ronnie Coleman***](https://generationiron.com/wp-content/uploads/2019/12/Ronnie-Coleman-Reveals-Who-Handed-Him-His-Most-Bitter-Loss.jpg)_
 
