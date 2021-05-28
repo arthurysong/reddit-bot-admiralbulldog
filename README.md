@@ -36,7 +36,7 @@ So in short, in order to avoid spamming the subreddit, I decided to remove the b
 * Monitor all subreddits not just bulldog's subreddit? I'm sure alot of other subreddit's use Sadge
 ## Dev
 
-1. Install dependencies: `pip install -r /path/to/requirements.txt`
+1. Install dependencies: `pip install -r ./requirements.txt`
 2. Set environment variables in `.env` file (see below for ENV vars)
 3. ~~Run local Redis running~~
 4. Run `python3 main.py`
