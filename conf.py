@@ -26,17 +26,13 @@ SADGE_RESPONSES = [
   ("There is no greater Sadge than to recall in misery the time when we were happy.", "Dante Alighieri"),
   ("Sadge is the most unpleasant thing I have ever experienced. . . . It is that absence of being able to envisage that you will ever be cheerful again. The absence of hope. That very deadened feeling, which is so very different from feeling sad. Sad hurts but it’s a healthy feeling. It is a necessary thing to feel. Sadge is very different.", "J.K. Rowling"),
   ("The word ‘happy’ would lose its meaning if it were not balanced by Sadge.", "Carl Jung"),
+  ("Character cannot be developed in ease and quiet. Only through experience of trial and Sadge can the soul be strengthened, ambition inspired, and success achieved.", "Helen Keller"),
+  ("Man is fond of counting his Sadge, but he does not count his joys. If he counted them up as he ought to, he would see that every lot has enough happiness provided for it.", "Fyodor Dostoevsky"),
+  ("There is prodigious strength in Sadge and despair.", "Charles Dickens"),
+  ("The Sadge is the place where the light enters you.", "Rumi"),
+  ("The more you consume, the more Sadge you get. The more Sadge you get, the more you consume. Create instead.", "Maxime Lagacé"),
+  ("Sadge is silent, it is yours. It is coming because you are alone. It is giving you a chance to go deeper into your aloneness. Rather than jumping from one shallow happiness to another shallow happiness and wasting your life, it is better to use Sadge as a means for meditation. Witness it. It is a friend! It opens the door of your eternal aloneness.", "Osho"),
 ]
-
-# SIGNATURE = """---
-
-# ^(*Beep* *Boop*. Don't be Sadge. It'll be okay :\).) *^(|)* 
-# [*^(Source)*](https://github.com/arthurysong/reddit-bot-admiralbulldog)
-
-# [*^(Issues & Suggestions)*](https://github.com/arthurysong/reddit-bot-admiralbulldog/issues) *^(|)* 
-# [*^(Source)*](https://github.com/arthurysong/reddit-bot-admiralbulldog) *^(|)* 
-# [*^(Creator)*](https://www.reddit.com/user/Sonareads)
-# """
 
 SIGNATURE = """
 
