@@ -43,6 +43,12 @@ SIGNATURE = """
 ^(\*Beep\* \*Boop\*. Don't be Sadge. It'll be okay :\).) *^(|)* 
 [*^(Source)*](https://github.com/arthurysong/reddit-bot-admiralbulldog)"""
 
+RONNIE_SIGNATURE = """
+^(\*Beep\* \*Boop\*. RONNIE MA *****!!!) *^(|)* 
+[*^(Source)*](https://github.com/arthurysong/reddit-bot-admiralbulldog)
+"""
+
+
 REPLY_RONNIE = """_You have summoned the great Donger's archnemesis [***Ronnie Coleman***](https://generationiron.com/wp-content/uploads/2019/12/Ronnie-Coleman-Reveals-Who-Handed-Him-His-Most-Bitter-Loss.jpg)_
 
-%s""" % (SIGNATURE)
+%s""" % (RONNIE_SIGNATURE)

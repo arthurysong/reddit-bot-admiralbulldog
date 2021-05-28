@@ -6,5 +6,6 @@
 ssh -i '~/.ssh/arthurec2.pem' ubuntu@54.215.178.93 /bin/bash <<EOT
   echo "test"
   cd reddit-bot-admiralbulldog
-  ./update.sh
+  git pull
+  pm2 restart main
 EOT

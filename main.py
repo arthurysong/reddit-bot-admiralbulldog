@@ -2,9 +2,8 @@
 
 from dotenv import load_dotenv
 from string_utils import check_string_for_ronnie, check_string_for_sadge, markdown_from_sadge_tuple
-from datetime import datetime
 from conf import SADGE_RESPONSES, SUBREDDIT, SIGNATURE, REPLY_RONNIE
-from .utils.get_pst_time import get_pst_time
+from utils.get_pst_time import get_pst_time
 import os
 import asyncpraw
 import asyncio
@@ -36,8 +35,9 @@ async def monitor_submissions_for_ronnie():
 
       print("monitoring submission stream for ronnie...")
       async for submission in subreddit.stream.submissions(skip_existing=True):
-        if check_string_for_ronnie(submission.title):
+        if check_string_for_ronnie(submission.title): 
           print("ronnie submission found")
+          print(get_pst_time())
           print(submission.url)
           await submission.reply(REPLY_RONNIE)
     except asyncprawcore.exceptions.RequestException:
