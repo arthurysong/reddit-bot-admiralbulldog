@@ -32,6 +32,11 @@ SADGE_RESPONSES = [
   ("The Sadge is the place where the light enters you.", "Rumi"),
   ("The more you consume, the more Sadge you get. The more Sadge you get, the more you consume. Create instead.", "Maxime Lagacé"),
   ("Sadge is silent, it is yours. It is coming because you are alone. It is giving you a chance to go deeper into your aloneness. Rather than jumping from one shallow happiness to another shallow happiness and wasting your life, it is better to use Sadge as a means for meditation. Witness it. It is a friend! It opens the door of your eternal aloneness.", "Osho"),
+  ("One thing you can't hide -- is when you're Sadge inside.", "John Lennon"),
+  ("Every life has a measure of Sadge, and sometimes this is what awakens us.", "Steven Tyler"),
+  ("Every human walks around with a certain kind of Sadge. They may not wear it on their sleeves, but it's there if you look deep", "Taraji P. Henson"),
+  ("Worry never robs tomorrow of its Sadge, it only saps today of its joy", "Leo Buscaglia"),
+  ("Don't Sadge. Anything you lose comes round in another form.", "Rumi"),
 ]
 
 SIGNATURE = """
